@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diandra Fabre — AI Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f2eb;
+      --ink: #1a1814;
+      --muted: #6b6659;
+      --accent: #2e5f4e;
+      --accent-light: #d4e9e2;
+      --rule: #d4cfc4;
+      --card: #edeae1;
+      --mono: 'DM Mono', monospace;
+      --serif: 'DM Serif Display', serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(245,242,235,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: .8rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 5rem 6rem 6rem;
+      border-right: 1px solid var(--rule);
+    }
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+    .hero-name em { font-style: italic; color: var(--accent); }
+    .hero-position {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      max-width: 38ch;
+    }
+    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .65rem 1.4rem;
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all .2s;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      border: 1px solid var(--accent);
+    }
+    .btn-primary:hover { background: #1e3f33; border-color: #1e3f33; }
+    .btn-outline {
+      background: transparent; color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-right {
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 4rem 4rem 4rem 5rem;
+      position: relative;
+    }
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-bottom: 3rem;
+    }
+    .stat {
+      background: var(--bg); padding: 1.5rem 1.8rem;
+    }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: .3rem;
+    }
+    .stat-label {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hero-interests {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .35rem .8rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 6rem; border-top: 1px solid var(--rule); }
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+    .section-num {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .2em;
+      color: var(--accent);
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 5rem;
+    }
+    .about-body p { margin-bottom: 1.2rem; color: var(--muted); max-width: 65ch; }
+    .about-body p:first-child { font-size: 1.1rem; color: var(--ink); }
+    .about-side h3 {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+    .about-side h3:first-child { margin-top: 0; }
+    .about-side ul { list-style: none; }
+    .about-side li {
+      font-size: .9rem;
+      color: var(--muted);
+      padding: .25rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .about-side li:last-child { border-bottom: none; }
+
+    /* ── PUBLICATIONS ── */
+    #publications { background: var(--card); }
+    .pub-list { display: flex; flex-direction: column; gap: 0; }
+    .pub-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background .2s;
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-year {
+      font-family: var(--mono);
+      font-size: .75rem;
+      color: var(--accent);
+      padding-top: .25rem;
+      min-width: 3.5rem;
+    }
+    .pub-body {}
+    .pub-title {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: .3rem;
+    }
+    .pub-authors {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-bottom: .3rem;
+    }
+    .pub-venue {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .08em;
+      color: var(--accent);
+    }
+    .pub-links { display: flex; gap: .5rem; padding-top: .2rem; }
+    .pub-link {
+      font-family: var(--mono);
+      font-size: .65rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .3rem .7rem;
+      border: 1px solid var(--rule);
+      text-decoration: none;
+      color: var(--muted);
+      border-radius: 2px;
+      transition: all .2s;
+    }
+    .pub-link:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .project-card {
+      background: var(--bg);
+      padding: 2.5rem 2rem;
+      display: flex; flex-direction: column;
+      transition: background .2s;
+    }
+    .project-card:hover { background: var(--accent-light); }
+    .project-icon {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .project-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: .8rem;
+    }
+    .project-desc {
+      font-size: .88rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.5rem; }
+    .project-link {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--accent);
+    }
+    .project-link:hover { text-decoration: underline; }
+
+    /* ── CV ── */
+    #cv { background: var(--card); }
+    .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .cv-col h3 {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+    .cv-entry { padding: 1.2rem 0; border-bottom: 1px solid var(--rule); }
+    .cv-entry:last-child { border-bottom: none; }
+    .cv-year {
+      font-family: var(--mono);
+      font-size: .7rem;
+      color: var(--muted);
+      margin-bottom: .25rem;
+    }
+    .cv-title { font-weight: 500; font-size: .95rem; margin-bottom: .2rem; }
+    .cv-place { font-size: .85rem; color: var(--muted); }
+    .cv-download {
+      margin-top: 3rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+
+    /* ── BLOG ── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .blog-card {
+      border: 1px solid var(--rule);
+      padding: 2rem;
+      display: flex; flex-direction: column;
+      transition: border-color .2s;
+    }
+    .blog-card:hover { border-color: var(--accent); }
+    .blog-date {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .8rem;
+    }
+    .blog-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      margin-bottom: .8rem;
+      line-height: 1.3;
+    }
+    .blog-excerpt { font-size: .85rem; color: var(--muted); flex: 1; margin-bottom: 1.2rem; }
+    .blog-read {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--accent);
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--ink); color: #f5f2eb; }
+    #contact .section-num { color: #6bbfa3; }
+    #contact .section-title { color: #f5f2eb; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+    .contact-left p { color: #a09d96; margin-bottom: 2rem; max-width: 40ch; line-height: 1.8; }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid #2e2c27;
+    }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-label {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #6bbfa3;
+      min-width: 5rem;
+    }
+    .contact-value {
+      font-size: .9rem;
+      color: #c8c4bc;
+    }
+    .contact-value a { color: #c8c4bc; text-decoration: none; }
+    .contact-value a:hover { color: #6bbfa3; }
+    .contact-right h3 {
+      font-family: var(--mono);
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #6bbfa3;
+      margin-bottom: 1.5rem;
+    }
+    .social-links { display: flex; flex-direction: column; gap: .8rem; }
+    .social-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 1.2rem;
+      border: 1px solid #2e2c27;
+      text-decoration: none;
+      color: #a09d96;
+      font-size: .88rem;
+      transition: all .2s;
+    }
+    .social-link:hover { border-color: #6bbfa3; color: #f5f2eb; }
+    .social-link span { font-family: var(--mono); font-size: .75rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 6rem;
+      border-top: 1px solid var(--rule);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-text {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 2rem; }
+      .nav-links { display: none; }
+      #home { grid-template-columns: 1fr; }
+      .hero-left { padding: 4rem 2rem 2rem; border-right: none; }
+      .hero-right { padding: 2rem; }
+      section { padding: 4rem 2rem; }
+      #about .about-grid, .contact-grid, .cv-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .projects-grid, .blog-grid { grid-template-columns: 1fr; }
+      footer { padding: 1.5rem 2rem; flex-direction: column; gap: .5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">D. Fabre</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#projects">Research</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left fade-in">
+    <p class="hero-tag">Post-doctoral Researcher · AI &amp; Computer Science</p>
+    <h1 class="hero-name">Diandra<br><em>Fabre</em></h1>
+    <p class="hero-position">Université Grenoble Alpes — working at the intersection of machine learning, data-driven modeling, and scientific computing.</p>
+    <div class="hero-links">
+      <a href="#publications" class="btn btn-primary">View Publications</a>
+      <a href="https://github.com/diandrafabre" target="_blank" class="btn btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="#contact" class="btn btn-outline">Contact</a>
+    </div>
+  </div>
+  <div class="hero-right fade-in" style="transition-delay:.15s">
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Publications</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Active Projects</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">340+</div>
+        <div class="stat-label">Citations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Years Research</div>
+      </div>
+    </div>
+    <div class="hero-interests">
+      <span class="tag">Machine Learning</span>
+      <span class="tag">Deep Learning</span>
+      <span class="tag">NLP</span>
+      <span class="tag">Scientific Computing</span>
+      <span class="tag">Explainable AI</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header fade-in">
+    <span class="section-num">01</span>
+    <h2 class="section-title">About</h2>
+  </div>
+  <div class="about-grid fade-in">
+    <div class="about-body">
+      <p>I am a post-doctoral researcher in Computer Science and Artificial Intelligence at Université Grenoble Alpes. My research focuses on developing robust and interpretable machine learning methods for complex real-world data.</p>
+      <p>My work sits at the interface of statistical learning theory and practical applications, with a particular interest in scenarios where data is scarce, heterogeneous, or comes with structured uncertainty. I am passionate about making AI systems that scientists and practitioners can genuinely trust.</p>
+      <p>Before joining UGA, I completed my PhD working on [placeholder — describe your PhD topic here]. I have collaborated with research groups across [placeholder — institutions/labs], and I regularly contribute to open-source scientific software.</p>
+      <p>Outside of research, I enjoy hiking in the Alps, following developments in science policy, and reading philosophy of mind.</p>
+    </div>
+    <div class="about-side">
+      <h3>Research Interests</h3>
+      <ul>
+        <li>Representation learning</li>
+        <li>Uncertainty quantification</li>
+        <li>Graph neural networks</li>
+        <li>Transfer & few-shot learning</li>
+        <li>Scientific machine learning</li>
+      </ul>
+      <h3>Languages</h3>
+      <ul>
+        <li>French (native)</li>
+        <li>English (fluent)</li>
+        <li>[Add others]</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-header fade-in">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Publications</h2>
+  </div>
+  <div class="pub-list">
+
+    <div class="pub-item fade-in">
+      <div class="pub-year">2024</div>
+      <div class="pub-body">
+        <div class="pub-title">Uncertainty-Aware Graph Neural Networks for Scientific Data Regression</div>
+        <div class="pub-authors">D. Fabre, [Co-author A], [Co-author B]</div>
+        <div class="pub-venue">NeurIPS 2024 · Advances in Neural Information Processing Systems</div>
+      </div>
+      <div class="pub-links">
+        <a href="#" class="pub-link">PDF</a>
+        <a href="https://github.com/diandrafabre" class="pub-link">Code</a>
+        <a href="#" class="pub-link">Cite</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in">
+      <div class="pub-year">2024</div>
+      <div class="pub-body">
+        <div class="pub-title">Contrastive Pre-training for Low-Resource Scientific Text Classification</div>
+        <div class="pub-authors">D. Fabre, [Co-author C]</div>
+        <div class="pub-venue">ICML 2024 · International Conference on Machine Learning</div>
+      </div>
+      <div class="pub-links">
+        <a href="#" class="pub-link">PDF</a>
+        <a href="https://github.com/diandrafabre" class="pub-link">Code</a>
+        <a href="#" class="pub-link">Cite</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in">
+      <div class="pub-year">2023</div>
+      <div class="pub-body">
+        <div class="pub-title">Towards Interpretable Anomaly Detection in High-Dimensional Time Series</div>
+        <div class="pub-authors">D. Fabre, [Co-author D], [Co-author E]</div>
+        <div class="pub-venue">ICLR 2023 · International Conference on Learning Representations</div>
+      </div>
+      <div class="pub-links">
+        <a href="#" class="pub-link">PDF</a>
+        <a href="https://github.com/diandrafabre" class="pub-link">Code</a>
+        <a href="#" class="pub-link">Cite</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in">
+      <div class="pub-year">2023</div>
+      <div class="pub-body">
+        <div class="pub-title">Scalable Bayesian Deep Learning with Structured Priors</div>
+        <div class="pub-authors">D. Fabre, [Co-author F]</div>
+        <div class="pub-venue">AISTATS 2023 · Artificial Intelligence and Statistics</div>
+      </div>
+      <div class="pub-links">
+        <a href="#" class="pub-link">PDF</a>
+        <a href="#" class="pub-link">Cite</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in">
+      <div class="pub-year">2022</div>
+      <div class="pub-body">
+        <div class="pub-title">Data-Efficient Transfer Learning via Latent Space Alignment</div>
+        <div class="pub-authors">D. Fabre, [Co-author G], [Co-author H]</div>
+        <div class="pub-venue">NeurIPS 2022 · Workshop on Transfer Learning</div>
+      </div>
+      <div class="pub-links">
+        <a href="#" class="pub-link">PDF</a>
+        <a href="#" class="pub-link">Cite</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header fade-in">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Research Projects</h2>
+  </div>
+  <div class="projects-grid fade-in">
+
+    <div class="project-card">
+      <div class="project-icon">🧠</div>
+      <div class="project-title">Explainable AI for Scientific Discovery</div>
+      <div class="project-desc">Developing methods that provide faithful explanations of neural network predictions in scientific domains where trust and interpretability are critical.</div>
+      <div class="project-tags">
+        <span class="tag">XAI</span>
+        <span class="tag">Deep Learning</span>
+      </div>
+      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">📊</div>
+      <div class="project-title">Uncertainty Quantification in ML</div>
+      <div class="project-desc">Building probabilistic models that reliably quantify prediction uncertainty, enabling safer deployment of AI in high-stakes scientific applications.</div>
+      <div class="project-tags">
+        <span class="tag">Bayesian ML</span>
+        <span class="tag">Statistics</span>
+      </div>
+      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🔗</div>
+      <div class="project-title">Graph Learning on Molecular Data</div>
+      <div class="project-desc">Applying graph neural network architectures to learn representations of molecular structures for property prediction and drug discovery tasks.</div>
+      <div class="project-tags">
+        <span class="tag">GNN</span>
+        <span class="tag">Cheminformatics</span>
+      </div>
+      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">📝</div>
+      <div class="project-title">NLP for Scientific Literature</div>
+      <div class="project-desc">Language models fine-tuned on scientific corpora for information extraction, knowledge graph construction, and automated literature review.</div>
+      <div class="project-tags">
+        <span class="tag">NLP</span>
+        <span class="tag">LLMs</span>
+      </div>
+      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">⚡</div>
+      <div class="project-title">Few-Shot Learning Benchmarks</div>
+      <div class="project-desc">Open benchmark suite for evaluating few-shot learning algorithms across diverse scientific datasets with standardized evaluation protocols.</div>
+      <div class="project-tags">
+        <span class="tag">Few-Shot</span>
+        <span class="tag">Benchmarks</span>
+      </div>
+      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🌍</div>
+      <div class="project-title">AI for Climate Modeling</div>
+      <div class="project-desc">Collaborating with climate scientists to integrate ML-based emulators into physical simulation pipelines for faster and more accurate projections.</div>
+      <div class="project-tags">
+        <span class="tag">Climate AI</span>
+        <span class="tag">Simulation</span>
+      </div>
+      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="section-header fade-in">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Curriculum Vitæ</h2>
+  </div>
+  <div class="cv-grid fade-in">
+    <div class="cv-col">
+      <h3>Academic Positions</h3>
+      <div class="cv-entry">
+        <div class="cv-year">2023 – Present</div>
+        <div class="cv-title">Post-doctoral Researcher</div>
+        <div class="cv-place">Université Grenoble Alpes, Grenoble, France</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">2022 – 2023</div>
+        <div class="cv-title">Research Intern</div>
+        <div class="cv-place">[Institution / Lab name]</div>
+      </div>
+
+      <h3 style="margin-top:2.5rem">Education</h3>
+      <div class="cv-entry">
+        <div class="cv-year">2019 – 2023</div>
+        <div class="cv-title">PhD in Computer Science</div>
+        <div class="cv-place">[University name] · Advisor: [Name]</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">2017 – 2019</div>
+        <div class="cv-title">MSc in [Field]</div>
+        <div class="cv-place">[University name]</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">2014 – 2017</div>
+        <div class="cv-title">BSc in [Field]</div>
+        <div class="cv-place">[University name]</div>
+      </div>
+    </div>
+    <div class="cv-col">
+      <h3>Reviewing &amp; Service</h3>
+      <div class="cv-entry">
+        <div class="cv-year">2023 – 2024</div>
+        <div class="cv-title">Reviewer</div>
+        <div class="cv-place">NeurIPS, ICML, ICLR, AISTATS</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">2022</div>
+        <div class="cv-title">Workshop Organizer</div>
+        <div class="cv-place">[Conference / Workshop name]</div>
+      </div>
+
+      <h3 style="margin-top:2.5rem">Teaching</h3>
+      <div class="cv-entry">
+        <div class="cv-year">2021 – 2022</div>
+        <div class="cv-title">Teaching Assistant — Machine Learning</div>
+        <div class="cv-place">[University name]</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">2020</div>
+        <div class="cv-title">Teaching Assistant — Algorithms</div>
+        <div class="cv-place">[University name]</div>
+      </div>
+
+      <div class="cv-download">
+        <a href="#" class="btn btn-primary">Download Full CV (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-header fade-in">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Blog &amp; Notes</h2>
+  </div>
+  <div class="blog-grid fade-in">
+
+    <div class="blog-card">
+      <div class="blog-date">November 2024</div>
+      <div class="blog-title">Why Uncertainty Quantification Matters for Scientific ML</div>
+      <div class="blog-excerpt">A reflection on why knowing what your model doesn't know is just as important as what it does — and the tools we have to measure it.</div>
+      <a href="#" class="blog-read">Read more →</a>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-date">September 2024</div>
+      <div class="blog-title">Notes from NeurIPS 2024: Trends I Found Exciting</div>
+      <div class="blog-excerpt">A personal recap of the talks, posters, and conversations that stood out to me at this year's conference in Vancouver.</div>
+      <a href="#" class="blog-read">Read more →</a>
+    </div>
+
+    <div class="blog-card">
+      <div class="blog-date">June 2024</div>
+      <div class="blog-title">Getting Started with Graph Neural Networks: A Practical Guide</div>
+      <div class="blog-excerpt">An accessible introduction to GNNs, illustrated with examples from molecular property prediction. With code.</div>
+      <a href="#" class="blog-read">Read more →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header fade-in">
+    <span class="section-num">06</span>
+    <h2 class="section-title">Contact</h2>
+  </div>
+  <div class="contact-grid fade-in">
+    <div class="contact-left">
+      <p>I'm always happy to discuss research collaborations, speaking invitations, or questions about my work. Feel free to reach out by email or connect on one of the platforms below.</p>
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <span class="contact-value"><a href="mailto:diandra.fabre@univ-grenoble-alpes.fr">diandra.fabre@univ-grenoble-alpes.fr</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Location</span>
+        <span class="contact-value">Grenoble, France</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Office</span>
+        <span class="contact-value">[Building / Room — add yours]</span>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h3>Find me online</h3>
+      <div class="social-links">
+        <a href="https://github.com/diandrafabre" target="_blank" class="social-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span>GitHub</span> github.com/diandrafabre
+        </a>
+        <a href="#" class="social-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 3a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm6 13H6v-.529c0-2.418 2.686-4.471 6-4.471s6 2.053 6 4.471V19z"/></svg>
+          <span>Google Scholar</span> Add your profile link
+        </a>
+        <a href="#" class="social-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span>LinkedIn</span> Add your profile link
+        </a>
+        <a href="#" class="social-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5.077 3.047C3.457 3.047 2.13 4.372 2.13 5.99c0 1.616 1.327 2.94 2.947 2.94a2.942 2.942 0 0 0 2.948-2.94 2.942 2.942 0 0 0-2.948-2.943zm0 4.88a1.94 1.94 0 0 1-1.94-1.937 1.94 1.94 0 0 1 1.94-1.937 1.938 1.938 0 0 1 0 3.875zM21.347 9.5h-3.044V8.356c0-1.097-.02-2.507-1.528-2.507-1.53 0-1.764 1.193-1.764 2.428V9.5h-3.044V.5h2.921v1.286h.04c.407-.771 1.4-1.584 2.881-1.584 3.083 0 3.651 2.028 3.651 4.666V9.5zM2.368.5h3.05v9H2.368V.5z" transform="translate(1 7)"/></svg>
+          <span>ORCID</span> Add your ORCID ID
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-text">© 2025 Diandra Fabre · Université Grenoble Alpes</span>
+  <span class="footer-text">Built with HTML/CSS · Hosted on GitHub Pages</span>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Active nav link highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    });
+  });
+</script>
+</body>
+</html>
