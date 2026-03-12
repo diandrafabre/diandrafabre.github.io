@@ -3,461 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Cache-Control" content="no-cache" />
   <title>Diandra Fabre — AI Researcher</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f5f2eb;
-      --ink: #1a1814;
-      --muted: #6b6659;
-      --accent: #2e5f4e;
-      --accent-light: #d4e9e2;
-      --rule: #d4cfc4;
-      --card: #edeae1;
-      --mono: 'DM Mono', monospace;
-      --serif: 'DM Serif Display', serif;
-      --sans: 'DM Sans', sans-serif;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--sans);
-      font-weight: 300;
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
-      background: rgba(245,242,235,0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--rule);
-    }
-    .nav-logo {
-      font-family: var(--mono);
-      font-size: .8rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
-    .nav-links a {
-      font-family: var(--mono);
-      font-size: .75rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--muted);
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--accent); }
-
-    /* ── HERO ── */
-    #home {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding-top: 5rem;
-    }
-    .hero-left {
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 6rem 5rem 6rem 6rem;
-      border-right: 1px solid var(--rule);
-    }
-    .hero-tag {
-      font-family: var(--mono);
-      font-size: .72rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
-    .hero-name {
-      font-family: var(--serif);
-      font-size: clamp(3rem, 5vw, 5rem);
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
-    }
-    .hero-name em { font-style: italic; color: var(--accent); }
-    .hero-position {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 2.5rem;
-      max-width: 38ch;
-    }
-    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: .5rem;
-      padding: .65rem 1.4rem;
-      font-family: var(--mono);
-      font-size: .75rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      transition: all .2s;
-    }
-    .btn-primary {
-      background: var(--accent); color: #fff;
-      border: 1px solid var(--accent);
-    }
-    .btn-primary:hover { background: #1e3f33; border-color: #1e3f33; }
-    .btn-outline {
-      background: transparent; color: var(--ink);
-      border: 1px solid var(--rule);
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
-    .hero-right {
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 4rem 4rem 4rem 5rem;
-      position: relative;
-    }
-    .hero-stats {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 1px; background: var(--rule);
-      border: 1px solid var(--rule);
-      margin-bottom: 3rem;
-    }
-    .stat {
-      background: var(--bg); padding: 1.5rem 1.8rem;
-    }
-    .stat-num {
-      font-family: var(--serif);
-      font-size: 2.2rem;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: .3rem;
-    }
-    .stat-label {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .hero-interests {
-      display: flex; flex-wrap: wrap; gap: .5rem;
-    }
-    .tag {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .35rem .8rem;
-      background: var(--accent-light);
-      color: var(--accent);
-      border-radius: 2px;
-    }
-
-    /* ── SECTIONS ── */
-    section { padding: 7rem 6rem; border-top: 1px solid var(--rule); }
-    .section-header {
-      display: flex; align-items: baseline; gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
-    .section-num {
-      font-family: var(--mono);
-      font-size: .7rem;
-      letter-spacing: .2em;
-      color: var(--accent);
-    }
-    .section-title {
-      font-family: var(--serif);
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-    }
-
-    /* ── ABOUT ── */
-    #about .about-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 5rem;
-    }
-    .about-body p { margin-bottom: 1.2rem; color: var(--muted); max-width: 65ch; }
-    .about-body p:first-child { font-size: 1.1rem; color: var(--ink); }
-    .about-side h3 {
-      font-family: var(--mono);
-      font-size: .7rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-      margin-top: 2rem;
-    }
-    .about-side h3:first-child { margin-top: 0; }
-    .about-side ul { list-style: none; }
-    .about-side li {
-      font-size: .9rem;
-      color: var(--muted);
-      padding: .25rem 0;
-      border-bottom: 1px solid var(--rule);
-    }
-    .about-side li:last-child { border-bottom: none; }
-
-    /* ── PUBLICATIONS ── */
-    #publications { background: var(--card); }
-    .pub-list { display: flex; flex-direction: column; gap: 0; }
-    .pub-item {
-      display: grid;
-      grid-template-columns: auto 1fr auto;
-      gap: 2rem;
-      align-items: start;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--rule);
-      transition: background .2s;
-    }
-    .pub-item:last-child { border-bottom: none; }
-    .pub-year {
-      font-family: var(--mono);
-      font-size: .75rem;
-      color: var(--accent);
-      padding-top: .25rem;
-      min-width: 3.5rem;
-    }
-    .pub-body {}
-    .pub-title {
-      font-size: 1rem;
-      font-weight: 500;
-      margin-bottom: .3rem;
-    }
-    .pub-authors {
-      font-size: .85rem;
-      color: var(--muted);
-      margin-bottom: .3rem;
-    }
-    .pub-venue {
-      font-family: var(--mono);
-      font-size: .72rem;
-      letter-spacing: .08em;
-      color: var(--accent);
-    }
-    .pub-links { display: flex; gap: .5rem; padding-top: .2rem; }
-    .pub-link {
-      font-family: var(--mono);
-      font-size: .65rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .3rem .7rem;
-      border: 1px solid var(--rule);
-      text-decoration: none;
-      color: var(--muted);
-      border-radius: 2px;
-      transition: all .2s;
-    }
-    .pub-link:hover { border-color: var(--accent); color: var(--accent); }
-    .pub-filter {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: .4rem 1rem;
-      border: 1px solid var(--rule);
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      border-radius: 2px;
-      transition: all .2s;
-    }
-    .pub-filter:hover, .pub-filter.active { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-    .pub-item.hidden { display: none; }
-
-    /* ── PROJECTS ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-    }
-    .project-card {
-      background: var(--bg);
-      padding: 2.5rem 2rem;
-      display: flex; flex-direction: column;
-      transition: background .2s;
-    }
-    .project-card:hover { background: var(--accent-light); }
-    .project-icon {
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    .project-title {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      margin-bottom: .8rem;
-    }
-    .project-desc {
-      font-size: .88rem;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      flex: 1;
-    }
-    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.5rem; }
-    .project-link {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--accent);
-    }
-    .project-link:hover { text-decoration: underline; }
-
-    /* ── CV ── */
-    #cv { background: var(--card); }
-    .cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
-    .cv-col h3 {
-      font-family: var(--mono);
-      font-size: .7rem;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2rem;
-    }
-    .cv-entry { padding: 1.2rem 0; border-bottom: 1px solid var(--rule); }
-    .cv-entry:last-child { border-bottom: none; }
-    .cv-year {
-      font-family: var(--mono);
-      font-size: .7rem;
-      color: var(--muted);
-      margin-bottom: .25rem;
-    }
-    .cv-title { font-weight: 500; font-size: .95rem; margin-bottom: .2rem; }
-    .cv-place { font-size: .85rem; color: var(--muted); }
-    .cv-download {
-      margin-top: 3rem;
-      display: flex; align-items: center; gap: 1rem;
-    }
-
-    /* ── BLOG ── */
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-    }
-    .blog-card {
-      border: 1px solid var(--rule);
-      padding: 2rem;
-      display: flex; flex-direction: column;
-      transition: border-color .2s;
-    }
-    .blog-card:hover { border-color: var(--accent); }
-    .blog-date {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: .8rem;
-    }
-    .blog-title {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      margin-bottom: .8rem;
-      line-height: 1.3;
-    }
-    .blog-excerpt { font-size: .85rem; color: var(--muted); flex: 1; margin-bottom: 1.2rem; }
-    .blog-read {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: var(--accent);
-    }
-
-    /* ── CONTACT ── */
-    #contact { background: var(--ink); color: #f5f2eb; }
-    #contact .section-num { color: #6bbfa3; }
-    #contact .section-title { color: #f5f2eb; }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
-    .contact-left p { color: #a09d96; margin-bottom: 2rem; max-width: 40ch; line-height: 1.8; }
-    .contact-item {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid #2e2c27;
-    }
-    .contact-item:last-child { border-bottom: none; }
-    .contact-label {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-      color: #6bbfa3;
-      min-width: 5rem;
-    }
-    .contact-value {
-      font-size: .9rem;
-      color: #c8c4bc;
-    }
-    .contact-value a { color: #c8c4bc; text-decoration: none; }
-    .contact-value a:hover { color: #6bbfa3; }
-    .contact-right h3 {
-      font-family: var(--mono);
-      font-size: .7rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: #6bbfa3;
-      margin-bottom: 1.5rem;
-    }
-    .social-links { display: flex; flex-direction: column; gap: .8rem; }
-    .social-link {
-      display: flex; align-items: center; gap: 1rem;
-      padding: 1rem 1.2rem;
-      border: 1px solid #2e2c27;
-      text-decoration: none;
-      color: #a09d96;
-      font-size: .88rem;
-      transition: all .2s;
-    }
-    .social-link:hover { border-color: #6bbfa3; color: #f5f2eb; }
-    .social-link span { font-family: var(--mono); font-size: .75rem; }
-
-    /* ── FOOTER ── */
-    footer {
-      padding: 2rem 6rem;
-      border-top: 1px solid var(--rule);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .footer-text {
-      font-family: var(--mono);
-      font-size: .68rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* ── ANIMATIONS ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity .6s ease, transform .6s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 1rem 2rem; }
-      .nav-links { display: none; }
-      #home { grid-template-columns: 1fr; }
-      .hero-left { padding: 4rem 2rem 2rem; border-right: none; }
-      .hero-right { padding: 2rem; }
-      section { padding: 4rem 2rem; }
-      #about .about-grid, .contact-grid, .cv-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .projects-grid, .blog-grid { grid-template-columns: 1fr; }
-      footer { padding: 1.5rem 2rem; flex-direction: column; gap: .5rem; text-align: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -477,7 +24,7 @@
 <!-- HERO -->
 <section id="home">
   <div class="hero-left fade-in">
-    <p class="hero-tag">Post-doctoral Researcher · Speech, NLP & Sign Language</p>
+    <p class="hero-tag">Post-doctoral Researcher · Speech, NLP &amp; Sign Language</p>
     <h1 class="hero-name">Diandra<br><em>Fabre</em></h1>
     <p class="hero-position">Université Grenoble Alpes — GETALP / LIG. Working on sign language AI, multimodal NLP, and assistive speech technologies.</p>
     <div class="hero-links">
@@ -489,28 +36,16 @@
       <a href="#contact" class="btn btn-outline">Contact</a>
     </div>
   </div>
-  <div class="hero-right fade-in" style="transition-delay:.15s">
+  <div class="hero-right fade-in">
     <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">22</div>
-        <div class="stat-label">Publications</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">160+</div>
-        <div class="stat-label">Citations</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">10+</div>
-        <div class="stat-label">Years Research</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Research Areas</div>
-      </div>
+      <div class="stat"><div class="stat-num">22</div><div class="stat-label">Publications</div></div>
+      <div class="stat"><div class="stat-num">160+</div><div class="stat-label">Citations</div></div>
+      <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Research</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Research Areas</div></div>
     </div>
     <div class="hero-interests">
       <span class="tag">Sign Language Processing</span>
-      <span class="tag">Speech & NLP</span>
+      <span class="tag">Speech &amp; NLP</span>
       <span class="tag">Multimodal Learning</span>
       <span class="tag">Articulatory Modeling</span>
       <span class="tag">Speech Therapy AI</span>
@@ -534,12 +69,12 @@
     <div class="about-side">
       <h3>Research Interests</h3>
       <ul>
-        <li>Sign language processing & translation</li>
-        <li>Speech & multimodal learning</li>
+        <li>Sign language processing &amp; translation</li>
+        <li>Speech &amp; multimodal learning</li>
         <li>Self-supervised representation learning</li>
         <li>NLP for low-resource settings</li>
-        <li>Pictogram & AAC systems</li>
-        <li>Assistive & clinical AI</li>
+        <li>Pictogram &amp; AAC systems</li>
+        <li>Assistive &amp; clinical AI</li>
       </ul>
       <h3>Affiliations</h3>
       <ul>
@@ -562,18 +97,15 @@
     <span class="section-num">02</span>
     <h2 class="section-title">Publications</h2>
   </div>
-  <!-- Filter bar -->
-  <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem;" id="pub-filters">
-    <button class="pub-filter active" data-filter="all" onclick="filterPubs(this,'all')">All</button>
-    <button class="pub-filter" data-filter="2026" onclick="filterPubs(this,'2026')">2026</button>
-    <button class="pub-filter" data-filter="2025" onclick="filterPubs(this,'2025')">2025</button>
-    <button class="pub-filter" data-filter="2024" onclick="filterPubs(this,'2024')">2024</button>
-    <button class="pub-filter" data-filter="2020" onclick="filterPubs(this,'2020')">2020</button>
-    <button class="pub-filter" data-filter="older" onclick="filterPubs(this,'older')">Older</button>
+  <div class="pub-filters">
+    <button class="pub-filter active" onclick="filterPubs(this,'all')">All</button>
+    <button class="pub-filter" onclick="filterPubs(this,'2026')">2026</button>
+    <button class="pub-filter" onclick="filterPubs(this,'2025')">2025</button>
+    <button class="pub-filter" onclick="filterPubs(this,'2024')">2024</button>
+    <button class="pub-filter" onclick="filterPubs(this,'2020')">2020</button>
+    <button class="pub-filter" onclick="filterPubs(this,'older')">Older</button>
   </div>
-
   <div class="pub-list">
-
     <div class="pub-item fade-in" data-year="2026">
       <div class="pub-year">2026</div>
       <div class="pub-body">
@@ -581,11 +113,8 @@
         <div class="pub-authors">PH Le, V Pelloin, A Chatelain, M Bouziane, M Ghennai, Q Guan, D Fabre, et al.</div>
         <div class="pub-venue">arXiv preprint arXiv:2601.05911</div>
       </div>
-      <div class="pub-links">
-        <a href="https://arxiv.org/abs/2601.05911" class="pub-link" target="_blank">arXiv</a>
-      </div>
+      <div class="pub-links"><a href="https://arxiv.org/abs/2601.05911" class="pub-link" target="_blank">arXiv</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="2025">
       <div class="pub-year">2025</div>
       <div class="pub-body">
@@ -593,11 +122,8 @@
         <div class="pub-authors">D. Fabre, J Lascar, J Halbout, Y Ouakrim, A Braffort, T Hueber, M Gouiffès, et al.</div>
         <div class="pub-venue">Adjunct Proceedings of the 25th ACM International Conference on Intelligent User Interfaces</div>
       </div>
-      <div class="pub-links">
-        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
-      </div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="2025">
       <div class="pub-year">2025</div>
       <div class="pub-body">
@@ -605,23 +131,17 @@
         <div class="pub-authors">C Macaire, D. Fabre, B Lecouteux, D Schwab</div>
         <div class="pub-venue">ImageCLEF 2025 / CLEF2025 Working Notes, CEUR Workshop Proceedings</div>
       </div>
-      <div class="pub-links">
-        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
-      </div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="2025">
       <div class="pub-year">2025</div>
       <div class="pub-body">
-        <div class="pub-title">GETALP@ AutoMin 2025: Leveraging RAG to Answer Questions based on Meeting Transcripts</div>
+        <div class="pub-title">GETALP @ AutoMin 2025: Leveraging RAG to Answer Questions based on Meeting Transcripts</div>
         <div class="pub-authors">J Kang, M Vartampetian, F Herron, Y Zhou, D. Fabre, G Gonzalez-Saez</div>
         <div class="pub-venue">arXiv preprint arXiv:2508.00476</div>
       </div>
-      <div class="pub-links">
-        <a href="https://arxiv.org/abs/2508.00476" class="pub-link" target="_blank">arXiv</a>
-      </div>
+      <div class="pub-links"><a href="https://arxiv.org/abs/2508.00476" class="pub-link" target="_blank">arXiv</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="2025">
       <div class="pub-year">2025</div>
       <div class="pub-body">
@@ -629,11 +149,8 @@
         <div class="pub-authors">J Halbout, D. Fabre</div>
         <div class="pub-venue">Actes des 18e Rencontres Jeunes Chercheurs en RI (RJCRI) et 27ème Rencontre des Étudiants Chercheurs en Informatique</div>
       </div>
-      <div class="pub-links">
-        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
-      </div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="2025">
       <div class="pub-year">2025</div>
       <div class="pub-body">
@@ -641,11 +158,8 @@
         <div class="pub-authors">M Vartampetian, D. Fabre, P Mulhem, S Joubert, D Schwab</div>
         <div class="pub-venue">Actes de l'atelier Évaluation des modèles génératifs (LLM) et challenge 2025</div>
       </div>
-      <div class="pub-links">
-        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
-      </div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="2024">
       <div class="pub-year">2024</div>
       <div class="pub-body">
@@ -653,11 +167,8 @@
         <div class="pub-authors">J Halbout, D. Fabre, Y Ouakrim, J Lascar, A Braffort, M Gouiffès, et al.</div>
         <div class="pub-venue">Proceedings of the LREC-COLING 2024 · 11th Workshop on the Representation and Processing of Sign Languages</div>
       </div>
-      <div class="pub-links">
-        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
-      </div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="2020">
       <div class="pub-year">2020</div>
       <div class="pub-body">
@@ -665,11 +176,8 @@
         <div class="pub-authors">M Girod-Roux, T Hueber, D. Fabre, S Gerber, M Canault, N Bedoin, et al.</div>
         <div class="pub-venue">Clinical Linguistics &amp; Phonetics, 34(9), 826–843</div>
       </div>
-      <div class="pub-links">
-        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
-      </div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="older">
       <div class="pub-year">2018</div>
       <div class="pub-body">
@@ -677,11 +185,8 @@
         <div class="pub-authors">C Haldin, A Acher, L Kauffmann, T Hueber, E Cousin, P Badin, P Perrier, D. Fabre, et al.</div>
         <div class="pub-venue">Clinical Linguistics &amp; Phonetics, 32(7), 595–621</div>
       </div>
-      <div class="pub-links">
-        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
-      </div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="older">
       <div class="pub-year">2017</div>
       <div class="pub-body">
@@ -689,11 +194,8 @@
         <div class="pub-authors">D. Fabre, T Hueber, L Girin, X Alameda-Pineda, P Badin</div>
         <div class="pub-venue">Speech Communication, 93, 63–75</div>
       </div>
-      <div class="pub-links">
-        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
-      </div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="older">
       <div class="pub-year">2015</div>
       <div class="pub-body">
@@ -701,11 +203,8 @@
         <div class="pub-authors">D. Fabre, T Hueber, F Bocquelet, P Badin</div>
         <div class="pub-venue">Interspeech 2015 — 16th Annual Conference of the International Speech Communication Association</div>
       </div>
-      <div class="pub-links">
-        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
-      </div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
     </div>
-
     <div class="pub-item fade-in" data-year="older">
       <div class="pub-year">2014</div>
       <div class="pub-body">
@@ -713,11 +212,8 @@
         <div class="pub-authors">D. Fabre, T Hueber, P Badin</div>
         <div class="pub-venue">Interspeech 2014, 2293–2297</div>
       </div>
-      <div class="pub-links">
-        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
-      </div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
     </div>
-
   </div>
 </section>
 
@@ -728,79 +224,48 @@
     <h2 class="section-title">Research Projects</h2>
   </div>
   <div class="projects-grid fade-in">
-
     <div class="project-card">
       <div class="project-icon">🤟</div>
       <div class="project-title">French Sign Language Translation</div>
       <div class="project-desc">Developing automatic translation systems for French Sign Language (LSF), including sign-level strategies, corpus construction (Matignon-LSF), and alignment methods for bilingual subtitle–LSF data.</div>
-      <div class="project-tags">
-        <span class="tag">Sign Language</span>
-        <span class="tag">NLP</span>
-        <span class="tag">Multimodal</span>
-      </div>
+      <div class="project-tags"><span class="tag">Sign Language</span><span class="tag">NLP</span><span class="tag">Multimodal</span></div>
       <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
     </div>
-
     <div class="project-card">
       <div class="project-icon">🖼️</div>
       <div class="project-title">ImageCLEFtoPicto</div>
       <div class="project-desc">Co-organising the ImageCLEFtoPicto shared task: generating pictogram sequences from text and speech to support augmentative and alternative communication (AAC) for people with language disorders.</div>
-      <div class="project-tags">
-        <span class="tag">Pictograms</span>
-        <span class="tag">AAC</span>
-        <span class="tag">Evaluation</span>
-      </div>
+      <div class="project-tags"><span class="tag">Pictograms</span><span class="tag">AAC</span><span class="tag">Evaluation</span></div>
       <a href="https://www.imageclef.org" class="project-link" target="_blank">ImageCLEF →</a>
     </div>
-
     <div class="project-card">
       <div class="project-icon">🎙️</div>
-      <div class="project-title">Pantagruel — French Speech & Text Encoders</div>
+      <div class="project-title">Pantagruel — French Speech &amp; Text Encoders</div>
       <div class="project-desc">Contributing to Pantagruel, a unified self-supervised encoder for French text and speech, enabling robust cross-modal representations for downstream NLP and ASR tasks.</div>
-      <div class="project-tags">
-        <span class="tag">Self-Supervised</span>
-        <span class="tag">Speech</span>
-        <span class="tag">French NLP</span>
-      </div>
+      <div class="project-tags"><span class="tag">Self-Supervised</span><span class="tag">Speech</span><span class="tag">French NLP</span></div>
       <a href="https://arxiv.org/abs/2601.05911" class="project-link" target="_blank">arXiv →</a>
     </div>
-
     <div class="project-card">
       <div class="project-icon">🏥</div>
       <div class="project-title">Ultrasound Visual Biofeedback for Speech Therapy</div>
       <div class="project-desc">Designed deep learning models for real-time tongue tracking from ultrasound images, powering visual articulatory biofeedback tools used clinically with patients with aphasia and glossectomy.</div>
-      <div class="project-tags">
-        <span class="tag">Speech Therapy</span>
-        <span class="tag">Ultrasound</span>
-        <span class="tag">Clinical AI</span>
-      </div>
+      <div class="project-tags"><span class="tag">Speech Therapy</span><span class="tag">Ultrasound</span><span class="tag">Clinical AI</span></div>
       <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="project-link" target="_blank">Publications →</a>
     </div>
-
     <div class="project-card">
       <div class="project-icon">💬</div>
       <div class="project-title">RAG for Meeting Question Answering</div>
       <div class="project-desc">Leveraging retrieval-augmented generation (RAG) to answer questions grounded in meeting transcripts, as part of the AutoMin 2025 shared task within the GETALP team.</div>
-      <div class="project-tags">
-        <span class="tag">RAG</span>
-        <span class="tag">LLMs</span>
-        <span class="tag">QA</span>
-      </div>
+      <div class="project-tags"><span class="tag">RAG</span><span class="tag">LLMs</span><span class="tag">QA</span></div>
       <a href="https://arxiv.org/abs/2508.00476" class="project-link" target="_blank">arXiv →</a>
     </div>
-
     <div class="project-card">
       <div class="project-icon">📚</div>
       <div class="project-title">Domain-Specific LLM Evaluation (French)</div>
       <div class="project-desc">Building SuperGPQA-HCE-FR, a specialised French benchmark for evaluating large language models in hydraulic engineering and civil engineering domains.</div>
-      <div class="project-tags">
-        <span class="tag">LLM Eval</span>
-        <span class="tag">French NLP</span>
-        <span class="tag">Benchmarks</span>
-      </div>
+      <div class="project-tags"><span class="tag">LLM Eval</span><span class="tag">French NLP</span><span class="tag">Benchmarks</span></div>
       <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="project-link" target="_blank">Scholar →</a>
     </div>
-
   </div>
 </section>
 
@@ -823,12 +288,11 @@
         <div class="cv-title">[Position title]</div>
         <div class="cv-place">[Institution]</div>
       </div>
-
-      <h3 style="margin-top:2.5rem">Education</h3>
+      <h3>Education</h3>
       <div class="cv-entry">
         <div class="cv-year">2016</div>
         <div class="cv-title">PhD — Retour articulatoire visuel par échographie linguale augmentée</div>
-        <div class="cv-place">Université Grenoble Alpes · Advisor: T. Hueber, P. Badin</div>
+        <div class="cv-place">Université Grenoble Alpes · Advisors: T. Hueber, P. Badin</div>
       </div>
       <div class="cv-entry">
         <div class="cv-year">[Add MSc / BSc]</div>
@@ -853,14 +317,12 @@
         <div class="cv-title">[Role]</div>
         <div class="cv-place">[Venue]</div>
       </div>
-
-      <h3 style="margin-top:2.5rem">Teaching</h3>
+      <h3>Teaching</h3>
       <div class="cv-entry">
         <div class="cv-year">[Add teaching]</div>
         <div class="cv-title">[Course name]</div>
         <div class="cv-place">Université Grenoble Alpes</div>
       </div>
-
       <div class="cv-download">
         <a href="#" class="btn btn-primary">Download Full CV (PDF)</a>
       </div>
@@ -875,28 +337,24 @@
     <h2 class="section-title">Blog &amp; Notes</h2>
   </div>
   <div class="blog-grid fade-in">
-
     <div class="blog-card">
       <div class="blog-date">Coming soon</div>
       <div class="blog-title">Building Matignon-LSF: Lessons from Constructing a Large Sign Language Corpus</div>
       <div class="blog-excerpt">A behind-the-scenes look at the challenges of collecting, aligning, and annotating a large interpreted French Sign Language dataset for NLP research.</div>
       <a href="#" class="blog-read">Read more →</a>
     </div>
-
     <div class="blog-card">
       <div class="blog-date">Coming soon</div>
-      <div class="blog-title">From Ultrasound to Sign Language: A Decade of Speech & Language AI</div>
+      <div class="blog-title">From Ultrasound to Sign Language: A Decade of Speech &amp; Language AI</div>
       <div class="blog-excerpt">A personal reflection on how my research journey evolved from tongue tracking for speech therapy to multimodal translation for the Deaf community.</div>
       <a href="#" class="blog-read">Read more →</a>
     </div>
-
     <div class="blog-card">
       <div class="blog-date">Coming soon</div>
       <div class="blog-title">Pictograms as Language: What AI Can Learn from AAC Research</div>
       <div class="blog-excerpt">Augmentative and alternative communication offers a fascinating lens for thinking about meaning, grounding, and the limits of current language models.</div>
       <a href="#" class="blog-read">Read more →</a>
     </div>
-
   </div>
 </section>
 
@@ -911,7 +369,7 @@
       <p>I'm always happy to discuss research collaborations, speaking invitations, or questions about my work. Feel free to reach out by email or connect on one of the platforms below.</p>
       <div class="contact-item">
         <span class="contact-label">Email</span>
-        <span class="contact-value" id="email-display"><script>document.getElementById('email-display').innerHTML='<a href="mailto:diandra.fabre'+'@'+'univ-grenoble-alpes.fr">diandra.fabre'+'@'+'univ-grenoble-alpes.fr</a>';</script></span>
+        <span class="contact-value" id="em"></span>
       </div>
       <div class="contact-item">
         <span class="contact-label">Location</span>
@@ -930,7 +388,7 @@
           <span>GitHub</span> github.com/diandrafabre
         </a>
         <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ&hl=fr" target="_blank" class="social-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 3a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm6 13H6v-.529c0-2.418 2.686-4.471 6-4.471s6 2.053 6 4.471V19z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
           <span>Google Scholar</span> Diandra Fabre
         </a>
         <a href="#" class="social-link">
@@ -938,7 +396,7 @@
           <span>LinkedIn</span> Add your profile link
         </a>
         <a href="#" class="social-link">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M5.077 3.047C3.457 3.047 2.13 4.372 2.13 5.99c0 1.616 1.327 2.94 2.947 2.94a2.942 2.942 0 0 0 2.948-2.94 2.942 2.942 0 0 0-2.948-2.943zm0 4.88a1.94 1.94 0 0 1-1.94-1.937 1.94 1.94 0 0 1 1.94-1.937 1.938 1.938 0 0 1 0 3.875zM21.347 9.5h-3.044V8.356c0-1.097-.02-2.507-1.528-2.507-1.53 0-1.764 1.193-1.764 2.428V9.5h-3.044V.5h2.921v1.286h.04c.407-.771 1.4-1.584 2.881-1.584 3.083 0 3.651 2.028 3.651 4.666V9.5zM2.368.5h3.05v9H2.368V.5z" transform="translate(1 7)"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 4a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm3 14H9v-1l1-1V11l-1-1V9h4v7l1 1v1z"/></svg>
           <span>ORCID</span> Add your ORCID ID
         </a>
       </div>
@@ -948,38 +406,36 @@
 
 <!-- FOOTER -->
 <footer>
-  <span class="footer-text">© 2025 Diandra Fabre · Université Grenoble Alpes</span>
+  <span class="footer-text">© 2026 Diandra Fabre · Université Grenoble Alpes</span>
   <span class="footer-text">Built with HTML/CSS · Hosted on GitHub Pages</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Intersection Observer for fade-in animations
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
+<script>
+  (function(){
+    var e='diandra.fabre'+'\u0040'+'univ-grenoble-alpes.fr';
+    document.getElementById('em').innerHTML='<a href="mailto:'+e+'">'+e+'</a>';
+  })();
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  const observer=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+  },{threshold:0.08});
+  document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 
-  // Publication filter
-  function filterPubs(btn, year) {
-    document.querySelectorAll('.pub-filter').forEach(b => b.classList.remove('active'));
+  function filterPubs(btn,year){
+    document.querySelectorAll('.pub-filter').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
-    document.querySelectorAll('.pub-item').forEach(item => {
-      if (year === 'all' || item.dataset.year === year) {
-        item.classList.remove('hidden');
-      } else {
-        item.classList.add('hidden');
-      }
+    document.querySelectorAll('.pub-item').forEach(item=>{
+      item.classList.toggle('hidden',year!=='all'&&item.dataset.year!==year);
     });
   }
 
-  // Active nav link highlight
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current
+  const sections=document.querySelectorAll('section[id]');
+  const navLinks=document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll',()=>{
+    let current='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)current=s.id;});
+    navLinks.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+current?'var(--accent)':'';});
+  });
+</script>
+</body>
+</html>
