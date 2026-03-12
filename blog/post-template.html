@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post Title — Diandra Fabre</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    /* ── BLOG POST SPECIFIC STYLES ── */
+    .post-hero {
+      padding: 10rem 6rem 4rem;
+      border-bottom: 1px solid var(--rule);
+      max-width: 800px;
+    }
+    .post-back {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      transition: color .2s;
+    }
+    .post-back:hover { color: var(--accent); }
+    .post-meta {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .post-date {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .post-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+    .post-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .post-subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 60ch;
+      line-height: 1.7;
+    }
+
+    /* ── ARTICLE BODY ── */
+    .post-body {
+      max-width: 720px;
+      padding: 4rem 6rem 6rem;
+    }
+    .post-body h2 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      margin: 2.5rem 0 1rem;
+    }
+    .post-body h3 {
+      font-family: var(--mono);
+      font-size: .8rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 2rem 0 .8rem;
+    }
+    .post-body p {
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
+    .post-body p:first-of-type {
+      font-size: 1.1rem;
+      color: var(--ink);
+    }
+    .post-body ul, .post-body ol {
+      color: var(--muted);
+      padding-left: 1.5rem;
+      margin-bottom: 1.4rem;
+    }
+    .post-body li { margin-bottom: .5rem; line-height: 1.7; }
+    .post-body a { color: var(--accent); text-decoration: underline; }
+    .post-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding: .8rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--accent-light);
+      font-style: italic;
+      color: var(--ink);
+    }
+    .post-body code {
+      font-family: var(--mono);
+      font-size: .85em;
+      background: var(--card);
+      padding: .15em .4em;
+      border-radius: 2px;
+    }
+    .post-body pre {
+      background: var(--ink);
+      color: #e8e4dc;
+      padding: 1.5rem;
+      border-radius: 4px;
+      overflow-x: auto;
+      margin-bottom: 1.4rem;
+    }
+    .post-body pre code {
+      background: none;
+      padding: 0;
+      font-size: .85rem;
+      color: inherit;
+    }
+    .post-body hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 3rem 0;
+    }
+    .post-figure {
+      margin: 2.5rem 0;
+    }
+    .post-figure img {
+      width: 100%;
+      border: 1px solid var(--rule);
+    }
+    .post-figure figcaption {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+      margin-top: .6rem;
+      text-transform: uppercase;
+    }
+
+    /* ── FOOTER NAV ── */
+    .post-footer-nav {
+      max-width: 720px;
+      padding: 3rem 6rem 5rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+    .post-nav-link {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .post-nav-link:hover { color: var(--accent); }
+
+    @media (max-width: 900px) {
+      .post-hero, .post-body, .post-footer-nav { padding-left: 2rem; padding-right: 2rem; }
+      .post-hero { padding-top: 7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">D. Fabre</div>
+  <ul class="nav-links">
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#publications">Publications</a></li>
+    <li><a href="../index.html#projects">Research</a></li>
+    <li><a href="../index.html#cv">CV</a></li>
+    <li><a href="../index.html#blog">Blog</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- POST HEADER -->
+<div class="post-hero fade-in">
+  <a href="../index.html#blog" class="post-back">
+    ← Blog &amp; Notes
+  </a>
+  <div class="post-meta">
+    <span class="post-date">Month YYYY</span>  <!-- e.g. "March 2025" -->
+    <div class="post-tags">
+      <span class="tag">Tag 1</span>
+      <span class="tag">Tag 2</span>
+    </div>
+  </div>
+  <h1 class="post-title">Your Post Title Goes Here</h1>
+  <p class="post-subtitle">A one or two sentence summary of what this post is about. Appears below the title as a lead-in.</p>
+</div>
+
+<!-- POST BODY -->
+<article class="post-body fade-in">
+
+  <p>This is your opening paragraph. It will appear slightly larger than the rest of the text. Write a strong introduction that sets up what the reader will learn or take away from this post.</p>
+
+  <p>Regular body paragraphs look like this. You can write as many as you like. The text is set in a comfortable reading width (72ch) and generous line-height for long-form reading.</p>
+
+  <h2>A Section Heading</h2>
+
+  <p>Use <code>h2</code> for major sections of your post. They render in the serif display font to match the rest of the site's aesthetic.</p>
+
+  <p>Here is an example of a <a href="#">hyperlink</a> within the body text. It uses the site's green accent colour.</p>
+
+  <h3>A Sub-heading</h3>
+
+  <p>Use <code>h3</code> for sub-sections. They render in small-caps monospace to visually distinguish them from h2 headings.</p>
+
+  <ul>
+    <li>Bullet point one</li>
+    <li>Bullet point two</li>
+    <li>Bullet point three</li>
+  </ul>
+
+  <blockquote>
+    Use blockquotes for key ideas, citations, or anything you want to pull out visually from the flow of the text.
+  </blockquote>
+
+  <h2>Adding a Figure</h2>
+
+  <figure class="post-figure">
+    <!-- Replace src with your image path, e.g. ../images/my-figure.png -->
+    <img src="https://via.placeholder.com/720x400?text=Figure" alt="Description of figure" />
+    <figcaption>Figure 1 — Caption describing the image.</figcaption>
+  </figure>
+
+  <p>Figures display full-width within the reading column with a subtle border and monospace caption below.</p>
+
+  <h2>Adding Code</h2>
+
+  <p>Inline code looks like <code>this</code>. For code blocks, use a <code>pre</code> tag:</p>
+
+  <pre><code>import torch
+model = MyModel()
+output = model(input_tensor)
+print(output.shape)</code></pre>
+
+  <hr />
+
+  <p>End your post here with a conclusion, takeaway, or invitation for discussion. You can add your email or link to a related paper below.</p>
+
+</article>
+
+<!-- FOOTER NAVIGATION -->
+<div class="post-footer-nav">
+  <a href="#" class="post-nav-link">← Previous post</a>
+  <a href="../index.html#blog" class="post-nav-link">All posts</a>
+  <a href="#" class="post-nav-link">Next post →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-text">© 2026 Diandra Fabre · Université Grenoble Alpes</span>
+  <span class="footer-text">Built with HTML/CSS · Hosted on GitHub Pages</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
