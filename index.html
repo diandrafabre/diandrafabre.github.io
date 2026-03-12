@@ -254,6 +254,21 @@
       transition: all .2s;
     }
     .pub-link:hover { border-color: var(--accent); color: var(--accent); }
+    .pub-filter {
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .4rem 1rem;
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all .2s;
+    }
+    .pub-filter:hover, .pub-filter.active { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
+    .pub-item.hidden { display: none; }
 
     /* ── PROJECTS ── */
     .projects-grid {
@@ -460,9 +475,9 @@
 <!-- HERO -->
 <section id="home">
   <div class="hero-left fade-in">
-    <p class="hero-tag">Post-doctoral Researcher · AI &amp; Computer Science</p>
+    <p class="hero-tag">Post-doctoral Researcher · Speech, NLP & Sign Language</p>
     <h1 class="hero-name">Diandra<br><em>Fabre</em></h1>
-    <p class="hero-position">Université Grenoble Alpes — working at the intersection of machine learning, data-driven modeling, and scientific computing.</p>
+    <p class="hero-position">Université Grenoble Alpes — GETALP / LIG. Working on sign language AI, multimodal NLP, and assistive speech technologies.</p>
     <div class="hero-links">
       <a href="#publications" class="btn btn-primary">View Publications</a>
       <a href="https://github.com/diandrafabre" target="_blank" class="btn btn-outline">
@@ -475,28 +490,28 @@
   <div class="hero-right fade-in" style="transition-delay:.15s">
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">12</div>
+        <div class="stat-num">22</div>
         <div class="stat-label">Publications</div>
       </div>
       <div class="stat">
-        <div class="stat-num">4</div>
-        <div class="stat-label">Active Projects</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">340+</div>
+        <div class="stat-num">160+</div>
         <div class="stat-label">Citations</div>
       </div>
       <div class="stat">
-        <div class="stat-num">5</div>
+        <div class="stat-num">10+</div>
         <div class="stat-label">Years Research</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Research Areas</div>
       </div>
     </div>
     <div class="hero-interests">
-      <span class="tag">Machine Learning</span>
-      <span class="tag">Deep Learning</span>
-      <span class="tag">NLP</span>
-      <span class="tag">Scientific Computing</span>
-      <span class="tag">Explainable AI</span>
+      <span class="tag">Sign Language Processing</span>
+      <span class="tag">Speech & NLP</span>
+      <span class="tag">Multimodal Learning</span>
+      <span class="tag">Articulatory Modeling</span>
+      <span class="tag">Speech Therapy AI</span>
     </div>
   </div>
 </section>
@@ -509,25 +524,31 @@
   </div>
   <div class="about-grid fade-in">
     <div class="about-body">
-      <p>I am a post-doctoral researcher in Computer Science and Artificial Intelligence at Université Grenoble Alpes. My research focuses on developing robust and interpretable machine learning methods for complex real-world data.</p>
-      <p>My work sits at the interface of statistical learning theory and practical applications, with a particular interest in scenarios where data is scarce, heterogeneous, or comes with structured uncertainty. I am passionate about making AI systems that scientists and practitioners can genuinely trust.</p>
-      <p>Before joining UGA, I completed my PhD working on [placeholder — describe your PhD topic here]. I have collaborated with research groups across [placeholder — institutions/labs], and I regularly contribute to open-source scientific software.</p>
-      <p>Outside of research, I enjoy hiking in the Alps, following developments in science policy, and reading philosophy of mind.</p>
+      <p>I am a post-doctoral researcher in Computer Science at Université Grenoble Alpes (GETALP / LIG), working at the intersection of speech processing, natural language processing, and sign language technologies.</p>
+      <p>My current research focuses on multimodal AI for under-resourced languages and communication modalities — in particular, automatic translation and recognition of French Sign Language (LSF), pictogram generation from text and speech for augmentative and alternative communication (AAC), and self-supervised representation learning for French text and audio. I co-organize the ImageCLEFtoPicto task and contribute to the ImageCLEF evaluation benchmarks for multimedia retrieval.</p>
+      <p>Before my postdoc, my research centred on articulatory speech processing: I developed deep learning methods for tongue tracking from ultrasound images and built visual articulatory biofeedback systems for speech therapy — applied clinically to patients with post-stroke aphasia and post-glossectomy speech disorders. This background gives me a strong motivation for building AI with tangible real-world impact, particularly in health and accessibility.</p>
+      <p>I am based in Grenoble, and when not coding I enjoy the Alps, science communication, and thinking about the role of language in human cognition.</p>
     </div>
     <div class="about-side">
       <h3>Research Interests</h3>
       <ul>
-        <li>Representation learning</li>
-        <li>Uncertainty quantification</li>
-        <li>Graph neural networks</li>
-        <li>Transfer & few-shot learning</li>
-        <li>Scientific machine learning</li>
+        <li>Sign language processing & translation</li>
+        <li>Speech & multimodal learning</li>
+        <li>Self-supervised representation learning</li>
+        <li>NLP for low-resource settings</li>
+        <li>Pictogram & AAC systems</li>
+        <li>Assistive & clinical AI</li>
+      </ul>
+      <h3>Affiliations</h3>
+      <ul>
+        <li>GETALP — LIG, UGA</li>
+        <li>ImageCLEF task organiser</li>
+        <li>[Add further affiliations]</li>
       </ul>
       <h3>Languages</h3>
       <ul>
         <li>French (native)</li>
         <li>English (fluent)</li>
-        <li>[Add others]</li>
       </ul>
     </div>
   </div>
@@ -539,73 +560,159 @@
     <span class="section-num">02</span>
     <h2 class="section-title">Publications</h2>
   </div>
+  <!-- Filter bar -->
+  <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem;" id="pub-filters">
+    <button class="pub-filter active" data-filter="all" onclick="filterPubs(this,'all')">All</button>
+    <button class="pub-filter" data-filter="2026" onclick="filterPubs(this,'2026')">2026</button>
+    <button class="pub-filter" data-filter="2025" onclick="filterPubs(this,'2025')">2025</button>
+    <button class="pub-filter" data-filter="2024" onclick="filterPubs(this,'2024')">2024</button>
+    <button class="pub-filter" data-filter="2020" onclick="filterPubs(this,'2020')">2020</button>
+    <button class="pub-filter" data-filter="older" onclick="filterPubs(this,'older')">Older</button>
+  </div>
+
   <div class="pub-list">
 
-    <div class="pub-item fade-in">
+    <div class="pub-item fade-in" data-year="2026">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">Pantagruel: Unified Self-Supervised Encoders for French Text and Speech</div>
+        <div class="pub-authors">PH Le, V Pelloin, A Chatelain, M Bouziane, M Ghennai, Q Guan, D Fabre, et al.</div>
+        <div class="pub-venue">arXiv preprint arXiv:2601.05911</div>
+      </div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2601.05911" class="pub-link" target="_blank">arXiv</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in" data-year="2025">
+      <div class="pub-year">2025</div>
+      <div class="pub-body">
+        <div class="pub-title">Exploring Sign-level Strategies to Enhance Automatic Translation of French Sign Language</div>
+        <div class="pub-authors">D. Fabre, J Lascar, J Halbout, Y Ouakrim, A Braffort, T Hueber, M Gouiffès, et al.</div>
+        <div class="pub-venue">Adjunct Proceedings of the 25th ACM International Conference on Intelligent User Interfaces</div>
+      </div>
+      <div class="pub-links">
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in" data-year="2025">
+      <div class="pub-year">2025</div>
+      <div class="pub-body">
+        <div class="pub-title">Overview of the 2025 ImageCLEFtoPicto Task — Investigating the Generation of Pictogram Sequences from Text and Speech</div>
+        <div class="pub-authors">C Macaire, D. Fabre, B Lecouteux, D Schwab</div>
+        <div class="pub-venue">ImageCLEF 2025 / CLEF2025 Working Notes, CEUR Workshop Proceedings</div>
+      </div>
+      <div class="pub-links">
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in" data-year="2025">
+      <div class="pub-year">2025</div>
+      <div class="pub-body">
+        <div class="pub-title">GETALP@ AutoMin 2025: Leveraging RAG to Answer Questions based on Meeting Transcripts</div>
+        <div class="pub-authors">J Kang, M Vartampetian, F Herron, Y Zhou, D. Fabre, G Gonzalez-Saez</div>
+        <div class="pub-venue">arXiv preprint arXiv:2508.00476</div>
+      </div>
+      <div class="pub-links">
+        <a href="https://arxiv.org/abs/2508.00476" class="pub-link" target="_blank">arXiv</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in" data-year="2025">
+      <div class="pub-year">2025</div>
+      <div class="pub-body">
+        <div class="pub-title">Corpus bilingue sous-titrage et Langue des Signes Française : la problématique de l'alignement automatique des données</div>
+        <div class="pub-authors">J Halbout, D. Fabre</div>
+        <div class="pub-venue">Actes des 18e Rencontres Jeunes Chercheurs en RI (RJCRI) et 27ème Rencontre des Étudiants Chercheurs en Informatique</div>
+      </div>
+      <div class="pub-links">
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in" data-year="2025">
+      <div class="pub-year">2025</div>
+      <div class="pub-body">
+        <div class="pub-title">SuperGPQA-HCE-FR : un corpus spécialisé en français pour le domaine hydraulique et le génie civil</div>
+        <div class="pub-authors">M Vartampetian, D. Fabre, P Mulhem, S Joubert, D Schwab</div>
+        <div class="pub-venue">Actes de l'atelier Évaluation des modèles génératifs (LLM) et challenge 2025</div>
+      </div>
+      <div class="pub-links">
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in" data-year="2024">
       <div class="pub-year">2024</div>
       <div class="pub-body">
-        <div class="pub-title">Uncertainty-Aware Graph Neural Networks for Scientific Data Regression</div>
-        <div class="pub-authors">D. Fabre, [Co-author A], [Co-author B]</div>
-        <div class="pub-venue">NeurIPS 2024 · Advances in Neural Information Processing Systems</div>
+        <div class="pub-title">Matignon-LSF: a Large Corpus of Interpreted French Sign Language</div>
+        <div class="pub-authors">J Halbout, D. Fabre, Y Ouakrim, J Lascar, A Braffort, M Gouiffès, et al.</div>
+        <div class="pub-venue">Proceedings of the LREC-COLING 2024 · 11th Workshop on the Representation and Processing of Sign Languages</div>
       </div>
       <div class="pub-links">
-        <a href="#" class="pub-link">PDF</a>
-        <a href="https://github.com/diandrafabre" class="pub-link">Code</a>
-        <a href="#" class="pub-link">Cite</a>
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
       </div>
     </div>
 
-    <div class="pub-item fade-in">
-      <div class="pub-year">2024</div>
+    <div class="pub-item fade-in" data-year="2020">
+      <div class="pub-year">2020</div>
       <div class="pub-body">
-        <div class="pub-title">Contrastive Pre-training for Low-Resource Scientific Text Classification</div>
-        <div class="pub-authors">D. Fabre, [Co-author C]</div>
-        <div class="pub-venue">ICML 2024 · International Conference on Machine Learning</div>
+        <div class="pub-title">Rehabilitation of Speech Disorders Following Glossectomy, Based on Ultrasound Visual Illustration and Feedback</div>
+        <div class="pub-authors">M Girod-Roux, T Hueber, D. Fabre, S Gerber, M Canault, N Bedoin, et al.</div>
+        <div class="pub-venue">Clinical Linguistics &amp; Phonetics, 34(9), 826–843</div>
       </div>
       <div class="pub-links">
-        <a href="#" class="pub-link">PDF</a>
-        <a href="https://github.com/diandrafabre" class="pub-link">Code</a>
-        <a href="#" class="pub-link">Cite</a>
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
       </div>
     </div>
 
-    <div class="pub-item fade-in">
-      <div class="pub-year">2023</div>
+    <div class="pub-item fade-in" data-year="older">
+      <div class="pub-year">2018</div>
       <div class="pub-body">
-        <div class="pub-title">Towards Interpretable Anomaly Detection in High-Dimensional Time Series</div>
-        <div class="pub-authors">D. Fabre, [Co-author D], [Co-author E]</div>
-        <div class="pub-venue">ICLR 2023 · International Conference on Learning Representations</div>
+        <div class="pub-title">Speech Recovery and Language Plasticity Can Be Facilitated by Sensori-Motor Fusion Training in Chronic Non-Fluent Aphasia</div>
+        <div class="pub-authors">C Haldin, A Acher, L Kauffmann, T Hueber, E Cousin, P Badin, P Perrier, D. Fabre, et al.</div>
+        <div class="pub-venue">Clinical Linguistics &amp; Phonetics, 32(7), 595–621</div>
       </div>
       <div class="pub-links">
-        <a href="#" class="pub-link">PDF</a>
-        <a href="https://github.com/diandrafabre" class="pub-link">Code</a>
-        <a href="#" class="pub-link">Cite</a>
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
       </div>
     </div>
 
-    <div class="pub-item fade-in">
-      <div class="pub-year">2023</div>
+    <div class="pub-item fade-in" data-year="older">
+      <div class="pub-year">2017</div>
       <div class="pub-body">
-        <div class="pub-title">Scalable Bayesian Deep Learning with Structured Priors</div>
-        <div class="pub-authors">D. Fabre, [Co-author F]</div>
-        <div class="pub-venue">AISTATS 2023 · Artificial Intelligence and Statistics</div>
+        <div class="pub-title">Automatic Animation of an Articulatory Tongue Model from Ultrasound Images of the Vocal Tract</div>
+        <div class="pub-authors">D. Fabre, T Hueber, L Girin, X Alameda-Pineda, P Badin</div>
+        <div class="pub-venue">Speech Communication, 93, 63–75</div>
       </div>
       <div class="pub-links">
-        <a href="#" class="pub-link">PDF</a>
-        <a href="#" class="pub-link">Cite</a>
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
       </div>
     </div>
 
-    <div class="pub-item fade-in">
-      <div class="pub-year">2022</div>
+    <div class="pub-item fade-in" data-year="older">
+      <div class="pub-year">2015</div>
       <div class="pub-body">
-        <div class="pub-title">Data-Efficient Transfer Learning via Latent Space Alignment</div>
-        <div class="pub-authors">D. Fabre, [Co-author G], [Co-author H]</div>
-        <div class="pub-venue">NeurIPS 2022 · Workshop on Transfer Learning</div>
+        <div class="pub-title">Tongue Tracking in Ultrasound Images Using Eigentongue Decomposition and Artificial Neural Networks</div>
+        <div class="pub-authors">D. Fabre, T Hueber, F Bocquelet, P Badin</div>
+        <div class="pub-venue">Interspeech 2015 — 16th Annual Conference of the International Speech Communication Association</div>
       </div>
       <div class="pub-links">
-        <a href="#" class="pub-link">PDF</a>
-        <a href="#" class="pub-link">Cite</a>
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
+      </div>
+    </div>
+
+    <div class="pub-item fade-in" data-year="older">
+      <div class="pub-year">2014</div>
+      <div class="pub-body">
+        <div class="pub-title">Automatic Animation of an Articulatory Tongue Model from Ultrasound Images Using Gaussian Mixture Regression</div>
+        <div class="pub-authors">D. Fabre, T Hueber, P Badin</div>
+        <div class="pub-venue">Interspeech 2014, 2293–2297</div>
+      </div>
+      <div class="pub-links">
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a>
       </div>
     </div>
 
@@ -621,69 +728,75 @@
   <div class="projects-grid fade-in">
 
     <div class="project-card">
-      <div class="project-icon">🧠</div>
-      <div class="project-title">Explainable AI for Scientific Discovery</div>
-      <div class="project-desc">Developing methods that provide faithful explanations of neural network predictions in scientific domains where trust and interpretability are critical.</div>
+      <div class="project-icon">🤟</div>
+      <div class="project-title">French Sign Language Translation</div>
+      <div class="project-desc">Developing automatic translation systems for French Sign Language (LSF), including sign-level strategies, corpus construction (Matignon-LSF), and alignment methods for bilingual subtitle–LSF data.</div>
       <div class="project-tags">
-        <span class="tag">XAI</span>
-        <span class="tag">Deep Learning</span>
-      </div>
-      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon">📊</div>
-      <div class="project-title">Uncertainty Quantification in ML</div>
-      <div class="project-desc">Building probabilistic models that reliably quantify prediction uncertainty, enabling safer deployment of AI in high-stakes scientific applications.</div>
-      <div class="project-tags">
-        <span class="tag">Bayesian ML</span>
-        <span class="tag">Statistics</span>
-      </div>
-      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon">🔗</div>
-      <div class="project-title">Graph Learning on Molecular Data</div>
-      <div class="project-desc">Applying graph neural network architectures to learn representations of molecular structures for property prediction and drug discovery tasks.</div>
-      <div class="project-tags">
-        <span class="tag">GNN</span>
-        <span class="tag">Cheminformatics</span>
-      </div>
-      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon">📝</div>
-      <div class="project-title">NLP for Scientific Literature</div>
-      <div class="project-desc">Language models fine-tuned on scientific corpora for information extraction, knowledge graph construction, and automated literature review.</div>
-      <div class="project-tags">
+        <span class="tag">Sign Language</span>
         <span class="tag">NLP</span>
-        <span class="tag">LLMs</span>
+        <span class="tag">Multimodal</span>
       </div>
       <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
     </div>
 
     <div class="project-card">
-      <div class="project-icon">⚡</div>
-      <div class="project-title">Few-Shot Learning Benchmarks</div>
-      <div class="project-desc">Open benchmark suite for evaluating few-shot learning algorithms across diverse scientific datasets with standardized evaluation protocols.</div>
+      <div class="project-icon">🖼️</div>
+      <div class="project-title">ImageCLEFtoPicto</div>
+      <div class="project-desc">Co-organising the ImageCLEFtoPicto shared task: generating pictogram sequences from text and speech to support augmentative and alternative communication (AAC) for people with language disorders.</div>
       <div class="project-tags">
-        <span class="tag">Few-Shot</span>
+        <span class="tag">Pictograms</span>
+        <span class="tag">AAC</span>
+        <span class="tag">Evaluation</span>
+      </div>
+      <a href="https://www.imageclef.org" class="project-link" target="_blank">ImageCLEF →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🎙️</div>
+      <div class="project-title">Pantagruel — French Speech & Text Encoders</div>
+      <div class="project-desc">Contributing to Pantagruel, a unified self-supervised encoder for French text and speech, enabling robust cross-modal representations for downstream NLP and ASR tasks.</div>
+      <div class="project-tags">
+        <span class="tag">Self-Supervised</span>
+        <span class="tag">Speech</span>
+        <span class="tag">French NLP</span>
+      </div>
+      <a href="https://arxiv.org/abs/2601.05911" class="project-link" target="_blank">arXiv →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">🏥</div>
+      <div class="project-title">Ultrasound Visual Biofeedback for Speech Therapy</div>
+      <div class="project-desc">Designed deep learning models for real-time tongue tracking from ultrasound images, powering visual articulatory biofeedback tools used clinically with patients with aphasia and glossectomy.</div>
+      <div class="project-tags">
+        <span class="tag">Speech Therapy</span>
+        <span class="tag">Ultrasound</span>
+        <span class="tag">Clinical AI</span>
+      </div>
+      <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="project-link" target="_blank">Publications →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">💬</div>
+      <div class="project-title">RAG for Meeting Question Answering</div>
+      <div class="project-desc">Leveraging retrieval-augmented generation (RAG) to answer questions grounded in meeting transcripts, as part of the AutoMin 2025 shared task within the GETALP team.</div>
+      <div class="project-tags">
+        <span class="tag">RAG</span>
+        <span class="tag">LLMs</span>
+        <span class="tag">QA</span>
+      </div>
+      <a href="https://arxiv.org/abs/2508.00476" class="project-link" target="_blank">arXiv →</a>
+    </div>
+
+    <div class="project-card">
+      <div class="project-icon">📚</div>
+      <div class="project-title">Domain-Specific LLM Evaluation (French)</div>
+      <div class="project-desc">Building SuperGPQA-HCE-FR, a specialised French benchmark for evaluating large language models in hydraulic engineering and civil engineering domains.</div>
+      <div class="project-tags">
+        <span class="tag">LLM Eval</span>
+        <span class="tag">French NLP</span>
         <span class="tag">Benchmarks</span>
       </div>
-      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
-    </div>
-
-    <div class="project-card">
-      <div class="project-icon">🌍</div>
-      <div class="project-title">AI for Climate Modeling</div>
-      <div class="project-desc">Collaborating with climate scientists to integrate ML-based emulators into physical simulation pipelines for faster and more accurate projections.</div>
-      <div class="project-tags">
-        <span class="tag">Climate AI</span>
-        <span class="tag">Simulation</span>
-      </div>
-      <a href="https://github.com/diandrafabre" class="project-link" target="_blank">View on GitHub →</a>
+      <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="project-link" target="_blank">Scholar →</a>
     </div>
 
   </div>
@@ -701,54 +814,49 @@
       <div class="cv-entry">
         <div class="cv-year">2023 – Present</div>
         <div class="cv-title">Post-doctoral Researcher</div>
-        <div class="cv-place">Université Grenoble Alpes, Grenoble, France</div>
+        <div class="cv-place">GETALP, Laboratoire Informatique de Grenoble (LIG) · Université Grenoble Alpes</div>
       </div>
       <div class="cv-entry">
-        <div class="cv-year">2022 – 2023</div>
-        <div class="cv-title">Research Intern</div>
-        <div class="cv-place">[Institution / Lab name]</div>
+        <div class="cv-year">[Add earlier positions]</div>
+        <div class="cv-title">[Position title]</div>
+        <div class="cv-place">[Institution]</div>
       </div>
 
       <h3 style="margin-top:2.5rem">Education</h3>
       <div class="cv-entry">
-        <div class="cv-year">2019 – 2023</div>
-        <div class="cv-title">PhD in Computer Science</div>
-        <div class="cv-place">[University name] · Advisor: [Name]</div>
+        <div class="cv-year">2016</div>
+        <div class="cv-title">PhD — Retour articulatoire visuel par échographie linguale augmentée</div>
+        <div class="cv-place">Université Grenoble Alpes · Advisor: T. Hueber, P. Badin</div>
       </div>
       <div class="cv-entry">
-        <div class="cv-year">2017 – 2019</div>
-        <div class="cv-title">MSc in [Field]</div>
-        <div class="cv-place">[University name]</div>
-      </div>
-      <div class="cv-entry">
-        <div class="cv-year">2014 – 2017</div>
-        <div class="cv-title">BSc in [Field]</div>
+        <div class="cv-year">[Add MSc / BSc]</div>
+        <div class="cv-title">[Degree]</div>
         <div class="cv-place">[University name]</div>
       </div>
     </div>
     <div class="cv-col">
-      <h3>Reviewing &amp; Service</h3>
+      <h3>Community Service</h3>
       <div class="cv-entry">
-        <div class="cv-year">2023 – 2024</div>
-        <div class="cv-title">Reviewer</div>
-        <div class="cv-place">NeurIPS, ICML, ICLR, AISTATS</div>
+        <div class="cv-year">2025</div>
+        <div class="cv-title">Task Organiser — ImageCLEFtoPicto</div>
+        <div class="cv-place">CLEF 2025, Madrid</div>
       </div>
       <div class="cv-entry">
-        <div class="cv-year">2022</div>
-        <div class="cv-title">Workshop Organizer</div>
-        <div class="cv-place">[Conference / Workshop name]</div>
+        <div class="cv-year">2025</div>
+        <div class="cv-title">Shared Task Participant — AutoMin 2025</div>
+        <div class="cv-place">GETALP team</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-year">[Add reviewing / committees]</div>
+        <div class="cv-title">[Role]</div>
+        <div class="cv-place">[Venue]</div>
       </div>
 
       <h3 style="margin-top:2.5rem">Teaching</h3>
       <div class="cv-entry">
-        <div class="cv-year">2021 – 2022</div>
-        <div class="cv-title">Teaching Assistant — Machine Learning</div>
-        <div class="cv-place">[University name]</div>
-      </div>
-      <div class="cv-entry">
-        <div class="cv-year">2020</div>
-        <div class="cv-title">Teaching Assistant — Algorithms</div>
-        <div class="cv-place">[University name]</div>
+        <div class="cv-year">[Add teaching]</div>
+        <div class="cv-title">[Course name]</div>
+        <div class="cv-place">Université Grenoble Alpes</div>
       </div>
 
       <div class="cv-download">
@@ -767,23 +875,23 @@
   <div class="blog-grid fade-in">
 
     <div class="blog-card">
-      <div class="blog-date">November 2024</div>
-      <div class="blog-title">Why Uncertainty Quantification Matters for Scientific ML</div>
-      <div class="blog-excerpt">A reflection on why knowing what your model doesn't know is just as important as what it does — and the tools we have to measure it.</div>
+      <div class="blog-date">Coming soon</div>
+      <div class="blog-title">Building Matignon-LSF: Lessons from Constructing a Large Sign Language Corpus</div>
+      <div class="blog-excerpt">A behind-the-scenes look at the challenges of collecting, aligning, and annotating a large interpreted French Sign Language dataset for NLP research.</div>
       <a href="#" class="blog-read">Read more →</a>
     </div>
 
     <div class="blog-card">
-      <div class="blog-date">September 2024</div>
-      <div class="blog-title">Notes from NeurIPS 2024: Trends I Found Exciting</div>
-      <div class="blog-excerpt">A personal recap of the talks, posters, and conversations that stood out to me at this year's conference in Vancouver.</div>
+      <div class="blog-date">Coming soon</div>
+      <div class="blog-title">From Ultrasound to Sign Language: A Decade of Speech & Language AI</div>
+      <div class="blog-excerpt">A personal reflection on how my research journey evolved from tongue tracking for speech therapy to multimodal translation for the Deaf community.</div>
       <a href="#" class="blog-read">Read more →</a>
     </div>
 
     <div class="blog-card">
-      <div class="blog-date">June 2024</div>
-      <div class="blog-title">Getting Started with Graph Neural Networks: A Practical Guide</div>
-      <div class="blog-excerpt">An accessible introduction to GNNs, illustrated with examples from molecular property prediction. With code.</div>
+      <div class="blog-date">Coming soon</div>
+      <div class="blog-title">Pictograms as Language: What AI Can Learn from AAC Research</div>
+      <div class="blog-excerpt">Augmentative and alternative communication offers a fascinating lens for thinking about meaning, grounding, and the limits of current language models.</div>
       <a href="#" class="blog-read">Read more →</a>
     </div>
 
@@ -801,7 +909,7 @@
       <p>I'm always happy to discuss research collaborations, speaking invitations, or questions about my work. Feel free to reach out by email or connect on one of the platforms below.</p>
       <div class="contact-item">
         <span class="contact-label">Email</span>
-        <span class="contact-value"><a href="mailto:diandra.fabre@univ-grenoble-alpes.fr">diandra.fabre@univ-grenoble-alpes.fr</a></span>
+        <span class="contact-value"><a href="/cdn-cgi/l/email-protection#ef8b868e818b9d8ec1898e8d9d8aaf9a818699c2889d8a81808d838ac28e839f8a9cc1899d"><span class="__cf_email__" data-cfemail="caaea3aba4aeb8abe4acaba8b8af8abfa4a3bce7adb8afa4a5a8a6afe7aba6baafb9e4acb8">[email&#160;protected]</span></a></span>
       </div>
       <div class="contact-item">
         <span class="contact-label">Location</span>
@@ -819,9 +927,9 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>GitHub</span> github.com/diandrafabre
         </a>
-        <a href="#" class="social-link">
+        <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ&hl=fr" target="_blank" class="social-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm-7 3a3 3 0 1 1 0 6 3 3 0 0 1 0-6zm6 13H6v-.529c0-2.418 2.686-4.471 6-4.471s6 2.053 6 4.471V19z"/></svg>
-          <span>Google Scholar</span> Add your profile link
+          <span>Google Scholar</span> Diandra Fabre
         </a>
         <a href="#" class="social-link">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
@@ -842,7 +950,7 @@
   <span class="footer-text">Built with HTML/CSS · Hosted on GitHub Pages</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Intersection Observer for fade-in animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -855,18 +963,21 @@
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+  // Publication filter
+  function filterPubs(btn, year) {
+    document.querySelectorAll('.pub-filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.pub-item').forEach(item => {
+      if (year === 'all' || item.dataset.year === year) {
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+  }
+
   // Active nav link highlight
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id');
-    });
-    navLinks.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
-    });
-  });
-</script>
-</body>
-</html>
+    let current
