@@ -26,7 +26,7 @@
   <div class="hero-left fade-in">
     <p class="hero-tag">Post-doctoral Researcher · Speech, NLP &amp; Sign Language</p>
     <h1 class="hero-name">Diandra<br><em>Fabre</em></h1>
-    <p class="hero-position">Université Grenoble Alpes — LIG. Working on generative AI, sign language processing, and multimodal NLP.</p>
+    <p class="hero-position">Université Grenoble Alpes — LIG. Working on generative AI, sign language processing, multimodal NLP, and fair, robust language technologies for French.</p>
     <div class="hero-links">
       <a href="#publications" class="btn btn-primary">View Publications</a>
       <a href="https://github.com/diandrafabre" target="_blank" class="btn btn-outline">
@@ -39,13 +39,15 @@
   <div class="hero-right fade-in">
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years Experience</div></div>
-      <div class="stat"><div class="stat-num">Reasearcher</div><div class="stat-label"></div>and Engineer</div>
+      <div class="stat"><div class="stat-num">23</div><div class="stat-label">Publications</div></div>
     </div>
     <div class="hero-interests">
       <span class="tag">Sign Language Processing</span>
       <span class="tag">Speech &amp; NLP</span>
       <span class="tag">Multimodal Learning</span>
       <span class="tag">Articulatory Modeling</span>
+      <span class="tag">Accent Variation in Speech</span>
+      <span class="tag">Toxicity &amp; Bias Detection</span>
       <span class="tag">Source separation</span>
     </div>
   </div>
@@ -60,7 +62,8 @@
   <div class="about-grid fade-in">
     <div class="about-body">
       <p>I am a post-doctoral researcher at Université Grenoble Alpes (GETALP / LIG), working at the intersection of speech processing, natural language processing, and sign language technologies.</p>
-      <p>My current research focuses on multimodal AI for under-resourced languages and communication modalities — in particular, automatic translation and recognition of French Sign Language (LSF), pictogram generation from text and speech for augmentative and alternative communication (AAC), and self-supervised representation learning for French text and audio. </p>
+      <p>My current research focuses on multimodal AI for under-resourced languages and communication modalities — in particular, automatic translation and recognition of French Sign Language (LSF), pictogram generation from text and speech for augmentative and alternative communication (AAC), and self-supervised representation learning for French text and audio.</p>
+      <p>I also work on fairness and robustness in French language technologies: evaluating how speech systems cope with the diversity of French accents across French-speaking regions and countries, and detecting LGBTphobic toxicity in French online content.</p>
       <p>Before my postdoc, my research centred on articulatory speech processing: I developed deep learning methods for tongue tracking from ultrasound images and built visual articulatory biofeedback systems for speech therapy — applied clinically to patients with post-stroke aphasia and post-glossectomy speech disorders. This background gives me a strong motivation for building AI with tangible real-world impact, particularly in health and accessibility.</p>
       <p>Between my PhD and my first post-doc, I worked for five years as R &amp; D Engineer for NomadPlay.</p>
     </div>
@@ -72,6 +75,8 @@
         <li>Self-supervised representation learning</li>
         <li>NLP for low-resource settings</li>
         <li>Pictogram &amp; AAC systems</li>
+        <li>Accent diversity &amp; robustness in speech</li>
+        <li>Toxicity &amp; hate speech detection</li>
         <li>Audio source separation</li>
       </ul>
       <h3>Affiliations</h3>
@@ -104,109 +109,223 @@
     <button class="pub-filter" onclick="filterPubs(this,'PhD')">PhD</button>
   </div>
   <div class="pub-list">
+    <!-- TEMPLATE — LGBTphobia toxicity detection paper: fill in and uncomment once published
+    <div class="pub-item fade-in" data-year="2026">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">TITLE</div>
+        <div class="pub-authors">AUTHORS</div>
+        <div class="pub-venue">VENUE</div>
+      </div>
+      <div class="pub-links"><a href="URL" class="pub-link" target="_blank" rel="noopener">PDF</a></div>
+    </div>
+    -->
+    <div class="pub-item fade-in" data-year="2026">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">Building a Dataset for French Accent Classification Evaluation: Are We There Yet?</div>
+        <div class="pub-authors"><strong>D. Fabre</strong>, M. Avanzi, F. Portet</div>
+        <div class="pub-venue">LREC 2026 · Palma, Spain · pp. 5711–5721</div>
+      </div>
+      <div class="pub-links"><a href="https://aclanthology.org/2026.lrec-1.450/" class="pub-link" target="_blank" rel="noopener">ACL</a><a href="https://aclanthology.org/2026.lrec-1.450.pdf" class="pub-link" target="_blank" rel="noopener">PDF</a><a href="https://hal.science/hal-05627773v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2026">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">Leveraging Text-side Augmentation for Sign Language Translation</div>
+        <div class="pub-authors"><strong>D. Fabre</strong>, J. Lascar, J. Halbout, M. Vartampetian</div>
+        <div class="pub-venue">LREC 2026 · 12th Workshop on the Representation and Processing of Sign Languages</div>
+      </div>
+      <div class="pub-links"><a href="https://hal.science/hal-05627889v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2026">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">Learning to Spot Signs from Named Entities. A Study on French Sign Language</div>
+        <div class="pub-authors">J. Halbout, A. Braffort, M. Gouiffès, <strong>D. Fabre</strong>, J. Lascar</div>
+        <div class="pub-venue">LREC 2026 · 12th Workshop on the Representation and Processing of Sign Languages</div>
+      </div>
+      <div class="pub-links"><a href="https://hal.science/hal-05636077v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2026">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">Pantagruel: Unified Self-Supervised Encoders for French Text and Speech</div>
+        <div class="pub-authors">P.H. Le, V. Pelloin, A. Chatelain, M. Bouziane, M. Ghennai, Q. Guan, et al.</div>
+        <div class="pub-venue">LREC 2026 · Palma, Spain</div>
+      </div>
+      <div class="pub-links"><a href="https://arxiv.org/abs/2601.05911" class="pub-link" target="_blank" rel="noopener">arXiv</a><a href="https://hal.science/hal-05627744v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2026">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">BenCSSmark: Making the Social Sciences Count in LLM Research</div>
+        <div class="pub-authors">A. Chatelain, E. Ollion, Q. Guan, <strong>D. Fabre</strong>, L. Goeuriot, et al.</div>
+        <div class="pub-venue">LREC 2026 · Palma, Spain</div>
+      </div>
+      <div class="pub-links"><a href="https://hal.science/hal-05627765v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2026">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">PoET: Lightweight Pose Encoder Transformer for Online Sign Language Recognition</div>
+        <div class="pub-authors">J. Lascar, J. Françoise, M. Gouiffès, A. Braffort, <strong>D. Fabre</strong></div>
+        <div class="pub-venue">VISAPP 2026 · Marbella, Spain</div>
+      </div>
+      <div class="pub-links"><a href="https://www.scitepress.org/Papers/2026/142375/142375.pdf" class="pub-link" target="_blank" rel="noopener">PDF</a><a href="https://hal.science/hal-05564749v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
     <div class="pub-item fade-in" data-year="2026">
       <div class="pub-year">2026</div>
       <div class="pub-body">
         <div class="pub-title">ELOQUENT Lab at CLEF 2026: Evaluation of Generative Language Model Quality</div>
-        <div class="pub-authors">J Karlgren, M Barrett, O Bojar, MI Engels, D Fabre, L Goeuriot et al.</div>
+        <div class="pub-authors">J. Karlgren, M. Barrett, O. Bojar, M.I. Engels, <strong>D. Fabre</strong>, L. Goeuriot, et al.</div>
+        <div class="pub-venue">ECIR 2026 · Delft</div>
       </div>
-      <div class="pub-links"><a href="https://link.springer.com/chapter/10.1007/978-3-032-21321-1_36"class="pub-link" target="_blank">ECIR</a></div>
+      <div class="pub-links"><a href="https://link.springer.com/chapter/10.1007/978-3-032-21321-1_36" class="pub-link" target="_blank" rel="noopener">Springer</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2026">
       <div class="pub-year">2026</div>
       <div class="pub-body">
-        <div class="pub-title">PoET: Lightweight Pose Encoder Transformer for Online Sign Language Recognition</div>
-        <div class="pub-authors">J Lascar, J Françoise, M Gouiffès, A Braffort, D Fabre</div>
+        <div class="pub-title">ImageCLEF 2026: Multimodal Challenges in Medicine, Science, Agritech, and Security</div>
+        <div class="pub-authors">B. Ionescu, H. Müller, D.-C. Stanciu, A. Radzhabov, A. García Seco de Herrera, et al.</div>
+        <div class="pub-venue">ECIR 2026 · Delft</div>
       </div>
-      <div class="pub-links"><a href="https://www.scitepress.org/Papers/2026/142375/142375.pdf"class="pub-link" target="_blank">HaL</a></div>
+      <div class="pub-links"><a href="https://link.springer.com/chapter/10.1007/978-3-032-21321-1_44" class="pub-link" target="_blank" rel="noopener">Springer</a><a href="https://hal.science/hal-05738257v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2026">
       <div class="pub-year">2026</div>
       <div class="pub-body">
-        <div class="pub-title">Pantagruel: Unified Self-Supervised Encoders for French Text and Speech</div>
-        <div class="pub-authors">PH Le, V Pelloin, A Chatelain, M Bouziane, M Ghennai, Q Guan, et al.</div>
-        <div class="pub-venue">arXiv preprint arXiv:2601.05911</div>
+        <div class="pub-title">Pantagruel : des encodeurs auto-supervisés unifiés pour le texte et la parole</div>
+        <div class="pub-authors">P.H. Le, V. Pelloin, A. Chatelain, M. Bouziane, M. Ghennai, et al.</div>
+        <div class="pub-venue">CORIA-TALN 2026 · Nantes</div>
       </div>
-      <div class="pub-links"><a href="https://arxiv.org/abs/2601.05911" class="pub-link" target="_blank">arXiv</a></div>
+      <div class="pub-links"><a href="https://hal.science/hal-05786114v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2026">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">Génération de questions-réponses expertes : YourExpertBench+</div>
+        <div class="pub-authors">M. Vartampetian, <strong>D. Fabre</strong>, P. Mulhem, F. Hassani, D. Schwab</div>
+        <div class="pub-venue">CORIA-TALN 2026 · Nantes</div>
+      </div>
+      <div class="pub-links"><a href="https://hal.science/hal-05708356v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2026">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-title">Encodeurs autosupervisés unifiés entre les modalités : focus sur la parole en français</div>
+        <div class="pub-authors">P.H. Le, V. Pelloin, A. Chatelain, M. Bouziane, M. Ghennai, et al.</div>
+        <div class="pub-venue">JEP 2026 · Montpellier</div>
+      </div>
+      <div class="pub-links"><a href="https://www.isca-archive.org/jep_2026/le26_jep.html" class="pub-link" target="_blank" rel="noopener">ISCA</a><a href="https://hal.science/hal-05738284v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
     </div>
     <div class="pub-item fade-in" data-year="2025">
       <div class="pub-year">2025</div>
       <div class="pub-body">
         <div class="pub-title">Exploring Sign-level Strategies to Enhance Automatic Translation of French Sign Language</div>
-        <div class="pub-authors">D. Fabre, J Lascar, J Halbout, Y Ouakrim, A Braffort, T Hueber, M Gouiffès, et al.</div>
-        <div class="pub-venue">Adjunct Proceedings of the 25th ACM International Conference on Intelligent User Interfaces</div>
+        <div class="pub-authors"><strong>D. Fabre</strong>, J. Lascar, J. Halbout, Y. Ouakrim, A. Braffort, T. Hueber, M. Gouiffès, et al.</div>
+        <div class="pub-venue">ACM IVA 2025 (Adjunct Proceedings) · Berlin</div>
       </div>
-      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
+      <div class="pub-links"><a href="https://hal.science/hal-05280328v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2025">
       <div class="pub-year">2025</div>
       <div class="pub-body">
         <div class="pub-title">Overview of the 2025 ImageCLEFtoPicto Task — Investigating the Generation of Pictogram Sequences from Text and Speech</div>
-        <div class="pub-authors">C Macaire, D. Fabre, B Lecouteux, D Schwab</div>
-        <div class="pub-venue">ImageCLEF 2025 / CLEF2025 Working Notes, CEUR Workshop Proceedings</div>
+        <div class="pub-authors">C. Macaire, <strong>D. Fabre</strong>, B. Lecouteux, D. Schwab</div>
+        <div class="pub-venue">CLEF 2025 Working Notes · CEUR Workshop Proceedings</div>
       </div>
-      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
+      <div class="pub-links"><a href="https://hal.science/hal-05383666v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2025">
       <div class="pub-year">2025</div>
       <div class="pub-body">
         <div class="pub-title">GETALP @ AutoMin 2025: Leveraging RAG to Answer Questions based on Meeting Transcripts</div>
-        <div class="pub-authors">J Kang, M Vartampetian, F Herron, Y Zhou, D. Fabre, G Gonzalez-Saez</div>
-        <div class="pub-venue">arXiv preprint arXiv:2508.00476</div>
+        <div class="pub-authors">J. Kang, M. Vartampetian, F. Herron, Y. Zhou, <strong>D. Fabre</strong>, G. Gonzalez-Saez</div>
+        <div class="pub-venue">arXiv:2508.00476</div>
       </div>
-      <div class="pub-links"><a href="https://arxiv.org/abs/2508.00476" class="pub-link" target="_blank">arXiv</a></div>
+      <div class="pub-links"><a href="https://arxiv.org/abs/2508.00476" class="pub-link" target="_blank" rel="noopener">arXiv</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2025">
       <div class="pub-year">2025</div>
       <div class="pub-body">
         <div class="pub-title">Corpus bilingue sous-titrage et Langue des Signes Française : la problématique de l'alignement automatique des données</div>
-        <div class="pub-authors">J Halbout, D. Fabre</div>
-        <div class="pub-venue">Actes des 18e Rencontres Jeunes Chercheurs en RI (RJCRI) et 27ème Rencontre des Étudiants Chercheurs en Informatique</div>
+        <div class="pub-authors">J. Halbout, <strong>D. Fabre</strong></div>
+        <div class="pub-venue">RECITAL / RJCRI 2025 · Marseille</div>
       </div>
-      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
+      <div class="pub-links"><a href="https://inria.hal.science/hal-05330660v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="2025">
       <div class="pub-year">2025</div>
       <div class="pub-body">
         <div class="pub-title">SuperGPQA-HCE-FR : un corpus spécialisé en français pour le domaine hydraulique et le génie civil</div>
-        <div class="pub-authors">M Vartampetian, D. Fabre, P Mulhem, S Joubert, D Schwab</div>
-        <div class="pub-venue">Actes de l'atelier Évaluation des modèles génératifs (LLM) et challenge 2025</div>
+        <div class="pub-authors">M. Vartampetian, <strong>D. Fabre</strong>, P. Mulhem, S. Joubert, D. Schwab</div>
+        <div class="pub-venue">Atelier Évaluation des modèles génératifs (LLM) et challenge 2025</div>
       </div>
-      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
+      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank" rel="noopener">Scholar</a></div>
     </div>
     <div class="pub-item fade-in" data-year="2024">
       <div class="pub-year">2024</div>
       <div class="pub-body">
         <div class="pub-title">Matignon-LSF: a Large Corpus of Interpreted French Sign Language</div>
-        <div class="pub-authors">J Halbout, D. Fabre, Y Ouakrim, J Lascar, A Braffort, M Gouiffès, et al.</div>
-        <div class="pub-venue">Proceedings of the LREC-COLING 2024 · 11th Workshop on the Representation and Processing of Sign Languages</div>
+        <div class="pub-authors">J. Halbout, <strong>D. Fabre</strong>, Y. Ouakrim, J. Lascar, A. Braffort, M. Gouiffès, et al.</div>
+        <div class="pub-venue">LREC-COLING 2024 · 11th Workshop on the Representation and Processing of Sign Languages</div>
       </div>
-      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
+      <div class="pub-links"><a href="https://hal.science/hal-04593865v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
     </div>
     <div class="pub-item fade-in" data-year="PhD">
       <div class="pub-year">2020</div>
       <div class="pub-body">
         <div class="pub-title">Rehabilitation of Speech Disorders Following Glossectomy, Based on Ultrasound Visual Illustration and Feedback</div>
-        <div class="pub-authors">M Girod-Roux, T Hueber, D. Fabre, S Gerber, M Canault, N Bedoin, et al.</div>
+        <div class="pub-authors">M. Girod-Roux, T. Hueber, <strong>D. Fabre</strong>, S. Gerber, M. Canault, N. Bedoin, et al.</div>
         <div class="pub-venue">Clinical Linguistics &amp; Phonetics, 34(9), 826–843</div>
       </div>
-      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
+      <div class="pub-links"><a href="https://hal.science/hal-01977670v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="PhD">
       <div class="pub-year">2018</div>
       <div class="pub-body">
         <div class="pub-title">Speech Recovery and Language Plasticity Can Be Facilitated by Sensori-Motor Fusion Training in Chronic Non-Fluent Aphasia</div>
-        <div class="pub-authors">C Haldin, A Acher, L Kauffmann, T Hueber, E Cousin, P Badin, P Perrier, D. Fabre, et al.</div>
+        <div class="pub-authors">C. Haldin, A. Acher, L. Kauffmann, T. Hueber, E. Cousin, P. Badin, P. Perrier, <strong>D. Fabre</strong>, et al.</div>
         <div class="pub-venue">Clinical Linguistics &amp; Phonetics, 32(7), 595–621</div>
       </div>
-      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
+      <div class="pub-links"><a href="https://hal.science/hal-01651198v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="PhD">
       <div class="pub-year">2017</div>
       <div class="pub-body">
         <div class="pub-title">Automatic Animation of an Articulatory Tongue Model from Ultrasound Images of the Vocal Tract</div>
-        <div class="pub-authors">D. Fabre, T Hueber, L Girin, X Alameda-Pineda, P Badin</div>
+        <div class="pub-authors"><strong>D. Fabre</strong>, T. Hueber, L. Girin, X. Alameda-Pineda, P. Badin</div>
         <div class="pub-venue">Speech Communication, 93, 63–75</div>
       </div>
-      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
+      <div class="pub-links"><a href="https://hal.science/hal-01578315v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="PhD">
+      <div class="pub-year">2016</div>
+      <div class="pub-body">
+        <div class="pub-title">Retour articulatoire visuel par échographie linguale augmentée : développements et application clinique</div>
+        <div class="pub-authors"><strong>D. Fabre</strong></div>
+        <div class="pub-venue">PhD thesis · Université Grenoble Alpes</div>
+      </div>
+      <div class="pub-links"><a href="https://theses.hal.science/tel-01502322v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="PhD">
       <div class="pub-year">2015</div>
       <div class="pub-body">
         <div class="pub-title">Tongue Tracking in Ultrasound Images Using Eigentongue Decomposition and Artificial Neural Networks</div>
-        <div class="pub-authors">D. Fabre, T Hueber, F Bocquelet, P Badin</div>
-        <div class="pub-venue">Interspeech 2015 — 16th Annual Conference of the International Speech Communication Association</div>
+        <div class="pub-authors"><strong>D. Fabre</strong>, T. Hueber, F. Bocquelet, P. Badin</div>
+        <div class="pub-venue">Interspeech 2015 · Dresden</div>
       </div>
-      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
+      <div class="pub-links"><a href="https://hal.science/hal-01228917v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
+    </div>
+    <div class="pub-item fade-in" data-year="PhD">
       <div class="pub-year">2014</div>
       <div class="pub-body">
         <div class="pub-title">Automatic Animation of an Articulatory Tongue Model from Ultrasound Images Using Gaussian Mixture Regression</div>
-        <div class="pub-authors">D. Fabre, T Hueber, P Badin</div>
-        <div class="pub-venue">Interspeech 2014, 2293–2297</div>
+        <div class="pub-authors"><strong>D. Fabre</strong>, T. Hueber, P. Badin</div>
+        <div class="pub-venue">Interspeech 2014 · Singapore, 2293–2297</div>
       </div>
-      <div class="pub-links"><a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="pub-link" target="_blank">Scholar</a></div>
+      <div class="pub-links"><a href="https://hal.science/hal-01070895v1" class="pub-link" target="_blank" rel="noopener">HAL</a></div>
     </div>
   </div>
 </section>
@@ -245,6 +364,20 @@
       <div class="project-desc">Building specialised French benchmark for evaluating large language models in engineering domains</div>
       <div class="project-tags"><span class="tag">LLM Eval</span><span class="tag">French NLP</span><span class="tag">Benchmarks</span></div>
       <a href="https://scholar.google.fr/citations?user=MtJSsn0AAAAJ" class="project-link" target="_blank">Scholar →</a>
+    </div>
+    <div class="project-card">
+      <div class="project-icon"></div>
+      <div class="project-title">French Accent Classification</div>
+      <div class="project-desc">Building an open benchmark to evaluate speech systems across French accents: the CFPR corpus extended with accent labels, validated by a perceptual study with 87 listeners, and used to test an eight-class accent classifier trained on Common Voice.</div>
+      <div class="project-tags"><span class="tag">Speech</span><span class="tag">Accents</span><span class="tag">Robustness</span></div>
+      <a href="https://aclanthology.org/2026.lrec-1.450/" class="project-link" target="_blank" rel="noopener">LREC 2026 →</a>
+    </div>
+    <div class="project-card">
+      <div class="project-icon"></div>
+      <div class="project-title">LGBTphobia Toxicity Detection</div>
+      <div class="project-desc">Detecting LGBTphobic toxicity in French online content, and evaluating how well language models recognise homophobic and transphobic speech.</div>
+      <div class="project-tags"><span class="tag">Toxicity</span><span class="tag">French NLP</span><span class="tag">Fairness</span></div>
+      <span class="project-link">Publication forthcoming</span>
     </div>
   </div>
 </section>
