@@ -170,6 +170,8 @@ section { padding: 7rem 6rem; border-top: 1px solid var(--rule); }
 .pub-year { font-family: var(--mono); font-size: .75rem; color: var(--accent); padding-top: .25rem; min-width: 3.5rem; }
 .pub-title { font-size: 1rem; font-weight: 500; margin-bottom: .3rem; }
 .pub-authors { font-size: .85rem; color: var(--muted); margin-bottom: .3rem; }
+.pub-authors strong { color: var(--ink); font-weight: 500; }
+.pub-links { flex-wrap: wrap; justify-content: flex-end; }
 .pub-venue { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; color: var(--accent); }
 .pub-links { display: flex; gap: .5rem; padding-top: .2rem; }
 .pub-link {
@@ -260,5 +262,7 @@ footer { padding: 2rem 6rem; border-top: 1px solid var(--rule); display: flex; a
   section { padding: 4rem 2rem; }
   #about .about-grid, .contact-grid, .cv-grid { grid-template-columns: 1fr; gap: 2rem; }
   .projects-grid, .blog-grid { grid-template-columns: 1fr; }
+  .pub-item { grid-template-columns: 1fr; gap: .6rem; }
+  .pub-links { justify-content: flex-start; }
   footer { padding: 1.5rem 2rem; flex-direction: column; gap: .5rem; text-align: center; }
 }
